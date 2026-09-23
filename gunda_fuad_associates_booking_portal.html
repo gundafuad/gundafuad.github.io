@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunda Fuad Associates - Premium Conflict Resolution</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#dc2626',
+                            darkred: '#991b1b',
+                            gold: '#f59e0b',
+                            dark: '#0f172a',
+                            card: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #090d16;
+            color: #f1f5f9;
+        }
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-panel-glow {
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            box-shadow: 0 0 25px rgba(220, 38, 38, 0.15);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #ef4444;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-red-600 selection:text-white custom-scrollbar">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                    <div class="w-12 h-12 bg-gradient-to-br from-red-600 to-black rounded-xl flex items-center justify-center border border-red-500/40 shadow-lg shadow-red-900/30">
+                        <i class="fa-solid fa-user-ninja text-2xl text-red-500"></i>
+                    </div>
+                    <div>
+                        <span class="font-display text-2xl font-bold tracking-wider text-white block leading-none">GUNDA FUAD</span>
+                        <span class="text-xs font-semibold tracking-widest text-red-500 uppercase">Associates & Solutions</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-red-500 bg-red-950/40 border border-red-800/40">
+                        <i class="fa-solid fa-house mr-2"></i>Home
+                    </button>
+                    <button onclick="switchTab('services')" id="nav-services" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-hand-fist mr-2"></i>Services
+                    </button>
+                    <button onclick="switchTab('operatives')" id="nav-operatives" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-users-gear mr-2"></i>Operatives
+                    </button>
+                    <button onclick="switchTab('booking')" id="nav-booking" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-calendar-plus mr-2"></i>Book Service
+                    </button>
+                    <button onclick="switchTab('track')" id="nav-track" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-magnifying-glass-location mr-2"></i>Track Booking
+                    </button>
+                </nav>
+
+                <!-- Admin Tab & Action Button -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="switchTab('admin')" id="nav-admin" class="relative group px-4 py-2 rounded-lg text-sm font-bold transition-all bg-slate-800 hover:bg-red-900/60 text-slate-200 border border-slate-700 hover:border-red-600 flex items-center space-x-2">
+                        <i class="fa-solid fa-user-shield text-amber-400"></i>
+                        <span>Admin Portal</span>
+                        <span id="admin-badge" class="hidden text-xs bg-red-600 text-white px-2 py-0.5 rounded-full font-sans">Unlocked</span>
+                    </button>
+                    
+                    <!-- Mobile menu button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-lg text-slate-300 hover:bg-slate-800">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-slate-800 px-4 py-3 space-y-2">
+            <button onclick="switchTab('home')" class="w-full text-left px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800"><i class="fa-solid fa-house w-6"></i> Home</button>
+            <button onclick="switchTab('services')" class="w-full text-left px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800"><i class="fa-solid fa-hand-fist w-6"></i> Services</button>
+            <button onclick="switchTab('operatives')" class="w-full text-left px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800"><i class="fa-solid fa-users-gear w-6"></i> Operatives</button>
+            <button onclick="switchTab('booking')" class="w-full text-left px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800"><i class="fa-solid fa-calendar-plus w-6"></i> Book Service</button>
+            <button onclick="switchTab('track')" class="w-full text-left px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800"><i class="fa-solid fa-magnifying-glass-location w-6"></i> Track Booking</button>
+            <button onclick="switchTab('admin')" class="w-full text-left px-4 py-2 rounded-lg text-amber-400 hover:bg-slate-800 font-bold"><i class="fa-solid fa-user-shield w-6"></i> Admin Dashboard</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- ================= TAB 1: HOME PAGE ================= -->
+        <section id="tab-home" class="tab-content space-y-12">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl glass-panel-glow p-8 sm:p-12 lg:p-16 border border-red-500/30">
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <i class="fa-solid fa-skull-crossbones text-[300px] text-red-500"></i>
+                </div>
+                <div class="relative z-10 max-w-3xl space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-red-950/80 border border-red-800 text-red-400 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                        <span>#1 Premium Conflict Resolution Syndicate</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-display font-bold tracking-tight text-white leading-tight">
+                        YOU HAVE A PROBLEM? <br><span class="gradient-text">FUAD BHAI HAS THE SOLUTION.</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 leading-relaxed">
+                        From intimidating loud neighbors to standing in long bank queues for you—Gunda Fuad Associates provides swift, ethical-ish, highly professional muscle and tactical presence. 
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="switchTab('booking')" class="px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-900/40 transition transform active:scale-95 flex items-center space-x-3 text-lg">
+                            <i class="fa-solid fa-hand-fist"></i>
+                            <span>Book Operative Now</span>
+                        </button>
+                        <button onclick="switchTab('services')" class="px-8 py-4 glass-panel hover:bg-slate-800 text-white font-semibold rounded-xl border border-slate-700 transition flex items-center space-x-2 text-lg">
+                            <span>Explore Services</span>
+                            <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elegant 100% Discount Poster for Women -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-rose-950/80 via-purple-950/60 to-slate-900 border border-pink-500/40 p-8 sm:p-10 shadow-2xl backdrop-blur-xl group hover:border-pink-500/70 transition-all duration-500">
+                <!-- Background Glowing accents -->
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-pink-600/15 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-rose-600/15 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="space-y-4 text-center lg:text-left max-w-2xl">
+                        <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/40 text-pink-300 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest backdrop-blur-md">
+                            <i class="fa-solid fa-crown text-amber-400"></i>
+                            <span>Special Sisterhood Protection Initiative</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-display font-bold text-white leading-tight">
+                            <span class="bg-gradient-to-r from-pink-300 via-rose-300 to-amber-200 bg-clip-text text-transparent">100% FREE FOR GIRLS</span> & WOMEN
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Zero fees. Total respect. Fuad Bhai’s ironclad directive: Any sister facing harassment, stalkers, creepy landlords, or unfair trouble receives <span class="text-pink-300 font-semibold">100% free priority dispatch</span>. Your safety is our honor.
+                        </p>
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-medium text-pink-200/80 pt-1">
+                            <span class="flex items-center space-x-1.5"><i class="fa-solid fa-shield-heart text-pink-400"></i><span>100% Fee Waived</span></span>
+                            <span class="text-slate-600">•</span>
+                            <span class="flex items-center space-x-1.5"><i class="fa-solid fa-bolt text-amber-400"></i><span>VIP Priority Dispatch</span></span>
+                            <span class="text-slate-600">•</span>
+                            <span class="flex items-center space-x-1.5"><i class="fa-solid fa-user-shield text-emerald-400"></i><span>Discreet & Zero Hassle</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Visual Discount Badge Card -->
+                    <div class="flex-shrink-0 flex flex-col items-center justify-center bg-slate-950/80 border border-pink-500/40 p-6 sm:p-8 rounded-2xl shadow-xl hover:scale-105 transition transform duration-300 text-center min-w-[240px]">
+                        <span class="text-xs font-bold uppercase tracking-widest text-pink-400">Exclusive Voucher</span>
+                        <div class="text-5xl sm:text-6xl font-display font-black bg-gradient-to-br from-pink-400 via-rose-300 to-amber-300 bg-clip-text text-transparent my-1">
+                            100% OFF
+                        </div>
+                        <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-4">SISTERHOOD DISCOUNT</span>
+                        <button onclick="claimGirlsDiscount()" class="w-full py-3.5 px-6 bg-gradient-to-r from-pink-600 via-rose-600 to-red-600 hover:from-pink-500 hover:to-red-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-pink-950/50 transition transform active:scale-95 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>Claim Free Service</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 text-center">
+                    <div class="text-3xl sm:text-4xl font-display font-bold text-red-500">100%</div>
+                    <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider font-semibold mt-1">Conflict Resolution</div>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 text-center">
+                    <div class="text-3xl sm:text-4xl font-display font-bold text-amber-500">15+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider font-semibold mt-1">Elite Operatives</div>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 text-center">
+                    <div class="text-3xl sm:text-4xl font-display font-bold text-emerald-500">2,400+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider font-semibold mt-1">Missions Accomplished</div>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 text-center">
+                    <div class="text-3xl sm:text-4xl font-display font-bold text-blue-500">0</div>
+                    <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider font-semibold mt-1">Questions Asked</div>
+                </div>
+            </div>
+
+            <!-- guarantee badges -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-2xl space-y-3">
+                    <div class="w-12 h-12 bg-red-950/60 rounded-xl flex items-center justify-center text-red-500 text-2xl border border-red-900/50">
+                        <i class="fa-solid fa-mask"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Guaranteed Discretion</h3>
+                    <p class="text-slate-400 text-sm">We strictly follow the Gunda Code of Ethics. Your identity and target details are locked behind 256-bit criminal encryption.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl space-y-3">
+                    <div class="w-12 h-12 bg-amber-950/60 rounded-xl flex items-center justify-center text-amber-500 text-2xl border border-amber-900/50">
+                        <i class="fa-solid fa-clock-fast"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Rapid 30-Min Dispatch</h3>
+                    <p class="text-slate-400 text-sm">Our gundas are stationed on tactical bikes across the city, ready to drop in with heavy stares at a moment's notice.</p>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl space-y-3">
+                    <div class="w-12 h-12 bg-emerald-950/60 rounded-xl flex items-center justify-center text-emerald-500 text-2xl border border-emerald-900/50">
+                        <i class="fa-solid fa-handshake-angle"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">No-Violence Policy*</h3>
+                    <p class="text-slate-400 text-sm">We resolve 99% of issues purely through terrifying eye contact, intense background music, and aggressive folded arms.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: SERVICES ================= -->
+        <section id="tab-services" class="tab-content hidden space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <h2 class="text-3xl font-display font-bold text-white uppercase tracking-wide">Our Specialized Services</h2>
+                <p class="text-slate-400">Select the level of persuasion your situation demands.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+                <!-- Services will be dynamically injected here -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: OPERATIVES ================= -->
+        <section id="tab-operatives" class="tab-content hidden space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <div class="inline-flex items-center space-x-2 bg-red-950/80 border border-red-800 text-red-400 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-users text-amber-400"></i>
+                    <span>The 12 Elite Heavyweight Squad</span>
+                </div>
+                <h2 class="text-3xl font-display font-bold text-white uppercase tracking-wide">Meet Our Operatives</h2>
+                <p class="text-slate-400 text-sm">Battle-tested professionals trained in intense staring, acoustic shock, public speeches, and precision conflict handling.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="operatives-grid">
+                <!-- Operative cards will be dynamically injected here -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: BOOKING FORM ================= -->
+        <section id="tab-booking" class="tab-content hidden max-w-3xl mx-auto space-y-8">
+            <div class="glass-panel-glow p-8 rounded-3xl border border-slate-700 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <h2 class="text-2xl font-display font-bold text-white flex items-center space-x-3">
+                        <i class="fa-solid fa-file-signature text-red-500"></i>
+                        <span>Book an Operative / Service</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Fill out the confidential dispatch request below.</p>
+                </div>
+
+                <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-6">
+                    <!-- Client Details -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Your Name / Alias *</label>
+                            <input type="text" id="book-client-name" required placeholder="e.g. Master Raju" class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Contact Number / Telegram *</label>
+                            <input type="text" id="book-client-phone" required placeholder="+91 98765 43210" class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <!-- Target Details -->
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Target Person / Party Name *</label>
+                            <input type="text" id="book-target-name" required placeholder="e.g. Loud Neighbor Sharma Ji" class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Target Location / Address *</label>
+                            <input type="text" id="book-location" required placeholder="e.g. Flat 302, Green Park Society" class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <!-- Service Selection -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Required Service *</label>
+                        <select id="book-service-select" onchange="updateBookingPrice()" required class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <!-- Preferred Operative -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Preferred Lead Operative</label>
+                        <select id="book-operative-select" class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                            <option value="Any Available">Any Available (Fastest Dispatch)</option>
+                            <!-- Populated dynamically -->
+                        </select>
+                    </div>
+
+                    <!-- Threat / Urgency Level -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Intensity Level</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="intensity" value="Mild" checked class="peer hidden">
+                                <div class="p-3 bg-slate-900 border border-slate-700 rounded-xl text-center peer-checked:border-emerald-500 peer-checked:bg-emerald-950/40 peer-checked:text-emerald-400 transition">
+                                    <i class="fa-solid fa-face-frown mb-1 block text-lg"></i>
+                                    <span class="text-xs font-bold">Mild</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="intensity" value="Aggressive" class="peer hidden">
+                                <div class="p-3 bg-slate-900 border border-slate-700 rounded-xl text-center peer-checked:border-amber-500 peer-checked:bg-amber-950/40 peer-checked:text-amber-400 transition">
+                                    <i class="fa-solid fa-face-angry mb-1 block text-lg"></i>
+                                    <span class="text-xs font-bold">Aggressive</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="intensity" value="Maximum Drama" class="peer hidden">
+                                <div class="p-3 bg-slate-900 border border-slate-700 rounded-xl text-center peer-checked:border-red-500 peer-checked:bg-red-950/40 peer-checked:text-red-400 transition">
+                                    <i class="fa-solid fa-fire-flame-curved mb-1 block text-lg"></i>
+                                    <span class="text-xs font-bold">Max Drama</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Sisterhood 100% Discount Option -->
+                    <div class="p-4 bg-gradient-to-r from-pink-950/40 to-slate-900 border border-pink-500/40 rounded-xl flex items-center justify-between gap-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-person-dress"></i>
+                            </div>
+                            <div>
+                                <label for="book-girl-discount" class="text-sm font-bold text-pink-300 cursor-pointer block">Sisterhood Protection Initiative (100% OFF)</label>
+                                <span class="text-xs text-slate-400 block">Check if you are a female client requesting dispatch. Fee is completely waived.</span>
+                            </div>
+                        </div>
+                        <input type="checkbox" id="book-girl-discount" onchange="updateBookingPrice()" class="w-6 h-6 rounded border-slate-700 text-pink-600 focus:ring-pink-500 accent-pink-600 cursor-pointer flex-shrink-0">
+                    </div>
+
+                    <!-- Special Instructions -->
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Special Notes / Dialogue Demands</label>
+                        <textarea id="book-notes" rows="3" placeholder="e.g., Tell him Fuad Bhai sent you. Bring extra sunglasses." class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition"></textarea>
+                    </div>
+
+                    <!-- Price Estimate Box -->
+                    <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 block uppercase font-semibold">Estimated Price</span>
+                            <span id="booking-calculated-price" class="text-2xl font-display font-bold text-emerald-400">₹0</span>
+                        </div>
+                        <div class="text-xs text-slate-500 text-right">
+                            <p>Includes protection guarantee</p>
+                            <p class="text-red-400 font-semibold">No advance needed. Pay post-work.</p>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-950 transition transform active:scale-98 flex items-center justify-center space-x-2 text-lg">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Confirm & Dispatch Request</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ================= TAB 5: TRACK BOOKING ================= -->
+        <section id="tab-track" class="tab-content hidden max-w-2xl mx-auto space-y-8">
+            <div class="glass-panel p-8 rounded-3xl border border-slate-800 text-center space-y-6">
+                <div class="w-16 h-16 bg-red-950/60 rounded-2xl border border-red-800/60 flex items-center justify-center mx-auto text-red-500 text-2xl">
+                    <i class="fa-solid fa-radar"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white uppercase">Track Mission Status</h2>
+                    <p class="text-slate-400 text-sm mt-1">Enter your Booking ID received during dispatch to inspect operation status.</p>
+                </div>
+
+                <div class="flex gap-2 max-w-md mx-auto">
+                    <input type="text" id="track-id-input" placeholder="e.g., GUNDA-8821" class="flex-grow bg-slate-900 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white uppercase tracking-wider focus:outline-none">
+                    <button onclick="trackBooking()" class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition">
+                        Search
+                    </button>
+                </div>
+
+                <!-- Result Container -->
+                <div id="track-result-container" class="hidden text-left mt-6">
+                    <!-- Dynamic details injected here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 6: ADMIN DASHBOARD (PASSWORD: anju) ================= -->
+        <section id="tab-admin" class="tab-content hidden space-y-8">
+            
+            <!-- ADMIN LOGIN LOCK MODAL OVERLAY (IF NOT AUTHENTICATED) -->
+            <div id="admin-auth-panel" class="max-w-md mx-auto glass-panel-glow p-8 rounded-3xl border border-red-500/40 text-center space-y-6">
+                <div class="w-16 h-16 bg-red-950/80 rounded-2xl border border-red-700 flex items-center justify-center mx-auto text-amber-400 text-3xl shadow-lg shadow-red-950">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white">RESTRICTED AREA</h2>
+                    <p class="text-slate-400 text-sm mt-1">Enter Fuad Bhai's Syndicate Admin Password.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="relative">
+                        <input type="password" id="admin-pass-input" placeholder="Enter Password" class="w-full bg-slate-900 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-center text-xl text-white tracking-widest focus:outline-none" onkeyup="if(event.key==='Enter') verifyAdminPassword()">
+                    </div>
+                    <button onclick="verifyAdminPassword()" class="w-full py-3.5 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white font-bold rounded-xl shadow-lg transition">
+                        Unlock Admin Access
+                    </button>
+                </div>
+                <p class="text-xs text-slate-500">Hint: Boss's right-hand name (4 letters lowercase: <span class="text-slate-400 italic">a***</span>)</p>
+            </div>
+
+            <!-- UNLOCKED ADMIN DASHBOARD CONTAINER -->
+            <div id="admin-dashboard-panel" class="hidden space-y-8">
+                <!-- Admin Header Bar -->
+                <div class="glass-panel p-6 rounded-2xl border border-amber-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-amber-500/10 rounded-xl border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <h2 class="text-2xl font-display font-bold text-white">COMMAND CENTER</h2>
+                                <span class="bg-amber-500/20 text-amber-400 text-xs px-2.5 py-0.5 rounded-full font-bold border border-amber-500/30">ADMIN MODE</span>
+                            </div>
+                            <p class="text-slate-400 text-sm">Logged in as: <span class="text-white font-semibold">Anju (Chief Syndicate Coordinator)</span></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <button onclick="seedDemoData()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-lg text-xs font-semibold text-slate-300 transition">
+                            <i class="fa-solid fa-database mr-1"></i> Add Demo Data
+                        </button>
+                        <button onclick="logoutAdmin()" class="px-4 py-2 bg-red-950/80 hover:bg-red-900 border border-red-800 rounded-lg text-xs font-semibold text-red-300 transition">
+                            <i class="fa-solid fa-right-from-bracket mr-1"></i> Lock Portal
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Quick Metrics Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass-panel p-5 rounded-xl border-slate-800">
+                        <span class="text-xs text-slate-400 font-semibold uppercase">Total Bookings</span>
+                        <div id="admin-stat-total" class="text-3xl font-display font-bold text-white mt-1">0</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-slate-800">
+                        <span class="text-xs text-slate-400 font-semibold uppercase">Pending Dispatches</span>
+                        <div id="admin-stat-pending" class="text-3xl font-display font-bold text-amber-400 mt-1">0</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-slate-800">
+                        <span class="text-xs text-slate-400 font-semibold uppercase">Missions In Progress</span>
+                        <div id="admin-stat-progress" class="text-3xl font-display font-bold text-blue-400 mt-1">0</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-slate-800">
+                        <span class="text-xs text-slate-400 font-semibold uppercase">Estimated Revenue</span>
+                        <div id="admin-stat-revenue" class="text-3xl font-display font-bold text-emerald-400 mt-1">₹0</div>
+                    </div>
+                </div>
+
+                <!-- Bookings Management Table -->
+                <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden">
+                    <div class="p-6 border-b border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <h3 class="text-xl font-bold text-white flex items-center space-x-2">
+                            <i class="fa-solid fa-list-check text-red-500"></i>
+                            <span>All Client Bookings</span>
+                        </h3>
+                        <div class="flex items-center space-x-3 w-full md:w-auto">
+                            <input type="text" id="admin-search-input" onkeyup="renderAdminTable()" placeholder="Search client or target..." class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none w-full md:w-64">
+                            <select id="admin-filter-status" onchange="renderAdminTable()" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none">
+                                <option value="ALL">All Status</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Dispatched">Dispatched</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-slate-300">
+                            <thead class="bg-slate-900/80 text-xs font-semibold uppercase text-slate-400 border-b border-slate-800">
+                                <tr>
+                                    <th class="p-4">ID</th>
+                                    <th class="p-4">Client</th>
+                                    <th class="p-4">Target & Address</th>
+                                    <th class="p-4">Service</th>
+                                    <th class="p-4">Operative</th>
+                                    <th class="p-4">Fee</th>
+                                    <th class="p-4">Status</th>
+                                    <th class="p-4 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-bookings-tbody" class="divide-y divide-slate-800">
+                                <!-- Table rows injected dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="glass-panel border-t border-slate-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <div class="flex items-center justify-center space-x-2 text-slate-400">
+                <i class="fa-solid fa-shield-halved text-red-500"></i>
+                <span class="font-display font-bold text-white tracking-wider">GUNDA FUAD ASSOCIATES</span>
+            </div>
+            <p class="text-xs text-slate-500 max-w-xl mx-auto">
+                Disclaimer: Gunda Fuad Associates is a comedic fictional service app. No real violence or intimidation is condoned. All operatives are trained actors with great biceps.
+            </p>
+            <p class="text-xs text-slate-600">© 2026 Gunda Fuad Associates. All rights reserved. Admin: <span class="text-slate-500 font-mono">anju</span></p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Overlay -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const DEFAULT_SERVICES = [
+            {
+                id: 'serv-1',
+                title: 'Mild Neighbor Staring',
+                icon: 'fa-eye',
+                price: 1500,
+                desc: 'Two heavy-set operatives sit outside target\'s house on a folding chair and stare silently while eating peanuts for 2 hours.',
+                badge: 'Popular'
+            },
+            {
+                id: 'serv-2',
+                title: 'Queue Line Enforcement',
+                icon: 'fa-people-line',
+                price: 2000,
+                desc: 'Ensures nobody cuts in front of you at wedding buffets, bank counters, or concert tickets. Includes aggressive folding of arms.',
+                badge: 'Essential'
+            },
+            {
+                id: 'serv-3',
+                title: 'Dramatic Exit Squad',
+                icon: 'fa-masks-theater',
+                price: 3500,
+                desc: 'Need to leave a boring party or bad date? Operative enters solemnly, whispers "Boss needs you in Dubai now", and escorts you out.',
+                badge: 'VIP'
+            },
+            {
+                id: 'serv-4',
+                title: 'Loud Music Debates',
+                icon: 'fa-volume-high',
+                price: 2500,
+                desc: 'When polite requests fail, Fuad Bhai\'s squad plays retro villain themes at 100dB right outside target\'s window until peace is restored.',
+                badge: 'Effective'
+            },
+            {
+                id: 'serv-5',
+                title: 'Debt Reminder (Visual Only)',
+                icon: 'fa-file-invoice-dollar',
+                price: 4500,
+                desc: 'Operatives ride slow black motorbikes outside the borrower\'s shop while wearing matching black sunglasses. Works 100% of the time.',
+                badge: 'Pro'
+            },
+            {
+                id: 'serv-6',
+                title: 'Full Fuad Tactical Convoy',
+                icon: 'fa-crown',
+                price: 10000,
+                desc: 'Fuad Bhai himself arrives in an open jeep with 4 associates in suits to resolve high-stakes family land disputes.',
+                badge: 'Ultimate'
+            }
+        ];
+
+        const DEFAULT_OPERATIVES = [
+            {
+                id: 'op-1',
+                name: 'ANSAF',
+                title: 'Folding Chair Strategist',
+                experience: '8 Years',
+                specialty: 'Heavy Stare & Eyebrow Flexing',
+                bicep: '18.5 Inches',
+                rating: '4.9',
+                image: 'https://placehold.co/400x400/330000/ff3333?text=ANSAF'
+            },
+            {
+                id: 'op-2',
+                name: 'ARSHAD',
+                title: 'Tea Shop Debater & Enforcer',
+                experience: '6 Years',
+                specialty: 'Loud Argumentation & Table Tapping',
+                bicep: '17.5 Inches',
+                rating: '4.8',
+                image: 'https://placehold.co/400x400/1a1a2e/e94560?text=ARSHAD'
+            },
+            {
+                id: 'op-3',
+                name: 'NIHAL',
+                title: 'Tactical Convoy Lead',
+                experience: '7 Years',
+                specialty: 'Acoustic Bike Engine Revving',
+                bicep: '18 Inches',
+                rating: '4.85',
+                image: 'https://placehold.co/400x400/16213e/0f3460?text=NIHAL'
+            },
+            {
+                id: 'op-4',
+                name: 'CHEPPI',
+                title: 'Acoustic Shock Specialist',
+                experience: '9 Years',
+                specialty: 'High-Impact Cheppi & Echo Claps',
+                bicep: '19 Inches',
+                rating: '4.95',
+                image: 'https://placehold.co/400x400/22092c/872341?text=CHEPPI'
+            },
+            {
+                id: 'op-5',
+                name: 'AHMAD',
+                title: 'Chief Orator & Speech Master',
+                experience: '10 Years',
+                specialty: 'Prasangikan (Non-Stop Intimidation Speech)',
+                bicep: '17 Inches',
+                rating: '5.0',
+                image: 'https://placehold.co/400x400/3d0000/ffaa00?text=AHMAD'
+            },
+            {
+                id: 'op-6',
+                name: 'MUHAMMED',
+                title: 'Silent Shadow Operative',
+                experience: '11 Years',
+                specialty: 'Unblinking 3-Hour Stare of Doom',
+                bicep: '19.5 Inches',
+                rating: '4.9',
+                image: 'https://placehold.co/400x400/0f172a/38bdf8?text=MUHAMMED'
+            },
+            {
+                id: 'op-7',
+                name: 'SAHL',
+                title: 'Melodic Threat Vocalist',
+                experience: '5 Years',
+                specialty: 'Vaanakkuyil (Terrifying Musical Serenades)',
+                bicep: '16.5 Inches',
+                rating: '4.95',
+                image: 'https://placehold.co/400x400/2e1065/a855f7?text=SAHL'
+            },
+            {
+                id: 'op-8',
+                name: 'AJSAL',
+                title: 'Kattan Chaya Enforcer',
+                experience: '8 Years',
+                specialty: 'Glass Tapping & Slow-Motion Walk',
+                bicep: '20 Inches',
+                rating: '4.85',
+                image: 'https://placehold.co/400x400/1e293b/10b981?text=AJSAL'
+            },
+            {
+                id: 'op-9',
+                name: 'ASHAFAQ',
+                title: 'Dark Sunglasses Strategist',
+                experience: '9 Years',
+                specialty: 'Pocket Comb & Dramatic Glares',
+                bicep: '18 Inches',
+                rating: '4.9',
+                image: 'https://placehold.co/400x400/450a0a/f43f5e?text=ASHAFAQ'
+            },
+            {
+                id: 'op-10',
+                name: 'NASHWAN',
+                title: 'Emergency Crisis Specialist',
+                experience: '6 Years',
+                specialty: 'Prasavam (Crisis Delivery & Drama Creation)',
+                bicep: '17.5 Inches',
+                rating: '4.8',
+                image: 'https://placehold.co/400x400/312e81/818cf8?text=NASHWAN'
+            },
+            {
+                id: 'op-11',
+                name: 'NAJIL',
+                title: 'Dramatic Entry Lead',
+                experience: '7 Years',
+                specialty: 'Door Kick Physics & Slow Entrance',
+                bicep: '18.5 Inches',
+                rating: '4.85',
+                image: 'https://placehold.co/400x400/064e3b/34d399?text=NAJIL'
+            },
+            {
+                id: 'op-12',
+                name: 'MAZIN',
+                title: 'Precision Tactical Snatcher',
+                experience: '12 Years',
+                specialty: 'Pluck Specialist (Targeted Precision Plucking)',
+                bicep: '19 Inches',
+                rating: '5.0',
+                image: 'https://placehold.co/400x400/701a75/f0abfc?text=MAZIN'
+            }
+        ];
+
+        // Persistent State Management
+        let bookings = JSON.parse(localStorage.getItem('gunda_bookings')) || [];
+        let isAdminLoggedIn = localStorage.getItem('gunda_admin_auth') === 'true';
+
+        window.onload = function() {
+            renderServices();
+            renderOperatives();
+            populateBookingDropdowns();
+            updateAdminAuthUI();
+
+            // Default to Home tab
+            switchTab('home');
+
+            // If no bookings exist, insert sample
+            if (bookings.length === 0) {
+                seedDemoData(false);
+            }
+        };
+
+        function switchTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+
+            // Show selected tab
+            const target = document.getElementById(`tab-${tabId}`);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            // Mobile menu close
+            document.getElementById('mobile-menu').classList.add('hidden');
+
+            // Nav styling
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60";
+            });
+
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = "nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-red-500 bg-red-950/40 border border-red-800/40";
+            }
+
+            // Admin tab refresh logic
+            if (tabId === 'admin') {
+                updateAdminAuthUI();
+                if (isAdminLoggedIn) {
+                    renderAdminTable();
+                    renderAdminStats();
+                }
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function renderServices() {
+            const container = document.getElementById('services-grid');
+            const selectEl = document.getElementById('book-service-select');
+            
+            container.innerHTML = '';
+            selectEl.innerHTML = '';
+
+            DEFAULT_SERVICES.forEach(s => {
+                // Card HTML
+                container.innerHTML += `
+                    <div class="glass-panel p-6 rounded-2xl space-y-4 hover:border-red-500/50 transition flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 bg-red-950/80 rounded-xl flex items-center justify-center text-red-500 text-xl border border-red-800/50">
+                                    <i class="fa-solid ${s.icon}"></i>
+                                </div>
+                                <span class="text-xs bg-slate-800 text-amber-400 px-2.5 py-1 rounded-full font-semibold border border-slate-700">${s.badge}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">${s.title}</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">${s.desc}</p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-500 uppercase font-semibold block">Starts from</span>
+                                <span class="text-2xl font-display font-bold text-emerald-400">₹${s.price.toLocaleString()}</span>
+                            </div>
+                            <button onclick="selectServiceAndBook('${s.id}')" class="px-4 py-2 bg-red-600/90 hover:bg-red-500 text-white rounded-xl font-semibold text-sm transition">
+                                Book This
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                // Select Option
+                selectEl.innerHTML += `<option value="${s.id}">${s.title} - ₹${s.price.toLocaleString()}</option>`;
+            });
+
+            updateBookingPrice();
+        }
+
+        function renderOperatives() {
+            const container = document.getElementById('operatives-grid');
+            const selectEl = document.getElementById('book-operative-select');
+
+            container.innerHTML = '';
+            
+            DEFAULT_OPERATIVES.forEach(op => {
+                container.innerHTML += `
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-slate-800 space-y-4 hover:border-slate-700 transition">
+                        <div class="h-48 bg-slate-900 relative">
+                            <img src="${op.image}" alt="${op.name}" class="w-full h-full object-cover">
+                            <div class="absolute bottom-2 right-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-amber-400 flex items-center space-x-1">
+                                <i class="fa-solid fa-star"></i>
+                                <span>${op.rating}</span>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <h3 class="text-2xl font-display font-bold text-white">${op.name}</h3>
+                                <p class="text-xs text-red-400 font-semibold uppercase tracking-wider">${op.title}</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-xs bg-slate-900/60 p-3 rounded-xl">
+                                <div>
+                                    <span class="text-slate-500 block">Experience</span>
+                                    <span class="font-bold text-slate-200">${op.experience}</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500 block">Bicep Size</span>
+                                    <span class="font-bold text-slate-200">${op.bicep}</span>
+                                </div>
+                                <div class="col-span-2 pt-1 border-t border-slate-800">
+                                    <span class="text-slate-500 block">Signature Specialty</span>
+                                    <span class="font-bold text-amber-400">${op.specialty}</span>
+                                </div>
+                            </div>
+                            <button onclick="selectOperativeAndBook('${op.name}')" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-bold transition">
+                                Request ${op.name}
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                selectEl.innerHTML += `<option value="${op.name}">${op.name} (${op.title})</option>`;
+            });
+        }
+
+        function populateBookingDropdowns() {
+            // Already handled inside renderServices & renderOperatives
+        }
+
+        function selectServiceAndBook(serviceId) {
+            document.getElementById('book-service-select').value = serviceId;
+            updateBookingPrice();
+            switchTab('booking');
+        }
+
+        function selectOperativeAndBook(opName) {
+            document.getElementById('book-operative-select').value = opName;
+            switchTab('booking');
+        }
+
+        function claimGirlsDiscount() {
+            const discountCheckbox = document.getElementById('book-girl-discount');
+            if (discountCheckbox) {
+                discountCheckbox.checked = true;
+            }
+            switchTab('booking');
+            updateBookingPrice();
+            showToast('100% Sisterhood Protection Discount Applied! Fee Waived.', 'success');
+        }
+
+        function updateBookingPrice() {
+            const serviceId = document.getElementById('book-service-select').value;
+            const isGirlDiscount = document.getElementById('book-girl-discount') ? document.getElementById('book-girl-discount').checked : false;
+            const service = DEFAULT_SERVICES.find(s => s.id === serviceId);
+            const priceEl = document.getElementById('booking-calculated-price');
+            
+            if (service && priceEl) {
+                if (isGirlDiscount) {
+                    priceEl.innerHTML = `<span class="line-through text-slate-500 text-lg mr-2">₹${service.price.toLocaleString()}</span> <span class="text-pink-400 font-bold">₹0 (100% FREE)</span>`;
+                } else {
+                    priceEl.innerText = `₹${service.price.toLocaleString()}`;
+                }
+            }
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+
+            const clientName = document.getElementById('book-client-name').value.trim();
+            const phone = document.getElementById('book-client-phone').value.trim();
+            const targetName = document.getElementById('book-target-name').value.trim();
+            const location = document.getElementById('book-location').value.trim();
+            const serviceId = document.getElementById('book-service-select').value;
+            const operative = document.getElementById('book-operative-select').value;
+            const notes = document.getElementById('book-notes').value.trim();
+            
+            const intensity = document.querySelector('input[name="intensity"]:checked').value;
+            const serviceObj = DEFAULT_SERVICES.find(s => s.id === serviceId);
+
+            const bookingId = 'GUNDA-' + Math.floor(1000 + Math.random() * 9000);
+
+            const newBooking = {
+                id: bookingId,
+                clientName,
+                phone,
+                targetName,
+                location,
+                serviceName: serviceObj ? serviceObj.title : 'General Muscle',
+                price: serviceObj ? serviceObj.price : 2000,
+                operative,
+                intensity,
+                notes,
+                status: 'Dispatched',
+                createdAt: new Date().toLocaleString()
+            };
+
+            bookings.unshift(newBooking);
+            localStorage.setItem('gunda_bookings', JSON.stringify(bookings));
+
+            // Reset form
+            document.getElementById('booking-form').reset();
+            updateBookingPrice();
+
+            // Show Toast & Redirect to Track view
+            showToast(`Dispatch Confirmed! Booking ID: ${bookingId}`, 'success');
+            
+            // Auto fill track field and show result
+            document.getElementById('track-id-input').value = bookingId;
+            switchTab('track');
+            trackBooking();
+        }
+
+        function trackBooking() {
+            const trackId = document.getElementById('track-id-input').value.trim().toUpperCase();
+            const container = document.getElementById('track-result-container');
+
+            if (!trackId) {
+                showToast('Please enter a valid Booking ID', 'error');
+                return;
+            }
+
+            const booking = bookings.find(b => b.id.toUpperCase() === trackId);
+
+            if (!booking) {
+                container.classList.remove('hidden');
+                container.innerHTML = `
+                    <div class="p-6 bg-red-950/40 border border-red-800 rounded-2xl text-center space-y-2">
+                        <i class="fa-solid fa-triangle-exclamation text-3xl text-red-500"></i>
+                        <h4 class="text-lg font-bold text-white">Booking ID Not Found</h4>
+                        <p class="text-xs text-slate-400">Please check your ID and try again, or create a new dispatch request.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let statusBadgeClass = 'bg-amber-500/20 text-amber-400 border-amber-500/30';
+            if (booking.status === 'Completed') statusBadgeClass = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+            if (booking.status === 'Cancelled') statusBadgeClass = 'bg-red-500/20 text-red-400 border-red-500/30';
+
+            container.classList.remove('hidden');
+            container.innerHTML = `
+                <div class="glass-panel p-6 rounded-2xl border border-slate-700 space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                        <div>
+                            <span class="text-xs text-slate-500 block font-semibold uppercase">Booking ID</span>
+                            <span class="text-xl font-display font-bold text-red-500">${booking.id}</span>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold border ${statusBadgeClass}">${booking.status}</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <span class="text-slate-500 text-xs block">Client Name</span>
+                            <span class="font-semibold text-white">${booking.clientName}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 text-xs block">Target</span>
+                            <span class="font-semibold text-white">${booking.targetName}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 text-xs block">Service Requested</span>
+                            <span class="font-semibold text-amber-400">${booking.serviceName}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 text-xs block">Assigned Lead</span>
+                            <span class="font-semibold text-slate-200">${booking.operative}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 text-xs block">Target Location</span>
+                            <span class="font-semibold text-slate-300">${booking.location}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 text-xs block">Fee Amount</span>
+                            <span class="font-semibold text-emerald-400">₹${booking.price.toLocaleString()}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-900 rounded-xl space-y-2">
+                        <span class="text-xs text-slate-400 font-bold uppercase block">Live Dispatch Log</span>
+                        <div class="space-y-1.5 text-xs">
+                            <div class="flex items-center space-x-2 text-emerald-400">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span>Request received & authenticated by Fuad Bhai</span>
+                            </div>
+                            <div class="flex items-center space-x-2 ${booking.status !== 'Pending' ? 'text-emerald-400' : 'text-slate-500'}">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span>Lead Operative ${booking.operative} dispatched to location</span>
+                            </div>
+                            <div class="flex items-center space-x-2 ${booking.status === 'Completed' ? 'text-emerald-400' : 'text-slate-500'}">
+                                <i class="fa-solid ${booking.status === 'Completed' ? 'fa-check-circle' : 'fa-spinner fa-spin'}"></i>
+                                <span>${booking.status === 'Completed' ? 'Target persuaded successfully! Mission completed.' : 'Operatives performing intense staring at target location...'}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function verifyAdminPassword() {
+            const input = document.getElementById('admin-pass-input').value.trim();
+            if (input === 'anju') {
+                isAdminLoggedIn = true;
+                localStorage.setItem('gunda_admin_auth', 'true');
+                showToast('Welcome Boss Anju! Admin Panel Unlocked.', 'success');
+                updateAdminAuthUI();
+                renderAdminTable();
+                renderAdminStats();
+            } else {
+                showToast('ACCESS DENIED! Incorrect Password.', 'error');
+                document.getElementById('admin-pass-input').value = '';
+            }
+        }
+
+        function logoutAdmin() {
+            isAdminLoggedIn = false;
+            localStorage.setItem('gunda_admin_auth', 'false');
+            updateAdminAuthUI();
+            showToast('Admin Portal Locked.', 'info');
+        }
+
+        function updateAdminAuthUI() {
+            const authPanel = document.getElementById('admin-auth-panel');
+            const dashPanel = document.getElementById('admin-dashboard-panel');
+            const badge = document.getElementById('admin-badge');
+
+            if (isAdminLoggedIn) {
+                authPanel.classList.add('hidden');
+                dashPanel.classList.remove('hidden');
+                badge.classList.remove('hidden');
+            } else {
+                authPanel.classList.remove('hidden');
+                dashPanel.classList.add('hidden');
+                badge.classList.add('hidden');
+            }
+        }
+
+        function renderAdminStats() {
+            const total = bookings.length;
+            const pending = bookings.filter(b => b.status === 'Pending').length;
+            const inProgress = bookings.filter(b => b.status === 'Dispatched').length;
+            const totalRevenue = bookings.reduce((acc, b) => acc + (b.status !== 'Cancelled' ? b.price : 0), 0);
+
+            document.getElementById('admin-stat-total').innerText = total;
+            document.getElementById('admin-stat-pending').innerText = pending;
+            document.getElementById('admin-stat-progress').innerText = inProgress;
+            document.getElementById('admin-stat-revenue').innerText = `₹${totalRevenue.toLocaleString()}`;
+        }
+
+        function renderAdminTable() {
+            const tbody = document.getElementById('admin-bookings-tbody');
+            const searchQuery = document.getElementById('admin-search-input').value.toLowerCase();
+            const statusFilter = document.getElementById('admin-filter-status').value;
+
+            tbody.innerHTML = '';
+
+            let filtered = bookings.filter(b => {
+                const matchesSearch = b.clientName.toLowerCase().includes(searchQuery) ||
+                                      b.targetName.toLowerCase().includes(searchQuery) ||
+                                      b.id.toLowerCase().includes(searchQuery);
+                const matchesStatus = statusFilter === 'ALL' || b.status === statusFilter;
+                return matchesSearch && matchesStatus;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="p-8 text-center text-slate-500">
+                            No booking records match your filter criteria.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            filtered.forEach(b => {
+                let badgeStyle = 'bg-amber-500/20 text-amber-400';
+                if (b.status === 'Completed') badgeStyle = 'bg-emerald-500/20 text-emerald-400';
+                if (b.status === 'Cancelled') badgeStyle = 'bg-red-500/20 text-red-400';
+                if (b.status === 'Dispatched') badgeStyle = 'bg-blue-500/20 text-blue-400';
+
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-900/50 transition">
+                        <td class="p-4 font-mono font-bold text-red-400">${b.id}</td>
+                        <td class="p-4">
+                            <div class="font-bold text-white">${b.clientName}</div>
+                            <div class="text-xs text-slate-400">${b.phone}</div>
+                        </td>
+                        <td class="p-4">
+                            <div class="font-semibold text-slate-200">${b.targetName}</div>
+                            <div class="text-xs text-slate-400 truncate max-w-xs">${b.location}</div>
+                        </td>
+                        <td class="p-4 text-xs font-medium text-amber-300">${b.serviceName}</td>
+                        <td class="p-4 text-xs text-slate-300 font-semibold">${b.operative}</td>
+                        <td class="p-4 font-bold text-emerald-400">₹${b.price.toLocaleString()}</td>
+                        <td class="p-4">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-bold ${badgeStyle}">${b.status}</span>
+                        </td>
+                        <td class="p-4 text-right space-x-1">
+                            <select onchange="updateBookingStatus('${b.id}', this.value)" class="bg-slate-900 border border-slate-700 text-xs text-slate-200 rounded px-2 py-1 focus:outline-none">
+                                <option value="Pending" ${b.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                <option value="Dispatched" ${b.status === 'Dispatched' ? 'selected' : ''}>Dispatched</option>
+                                <option value="Completed" ${b.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                                <option value="Cancelled" ${b.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                            </select>
+                            <button onclick="deleteBooking('${b.id}')" title="Delete" class="p-1.5 text-slate-400 hover:text-red-500 transition">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function updateBookingStatus(id, newStatus) {
+            const booking = bookings.find(b => b.id === id);
+            if (booking) {
+                booking.status = newStatus;
+                localStorage.setItem('gunda_bookings', JSON.stringify(bookings));
+                renderAdminTable();
+                renderAdminStats();
+                showToast(`Status for ${id} updated to ${newStatus}`, 'info');
+            }
+        }
+
+        function deleteBooking(id) {
+            if (confirm(`Are you sure you want to delete record ${id}?`)) {
+                bookings = bookings.filter(b => b.id !== id);
+                localStorage.setItem('gunda_bookings', JSON.stringify(bookings));
+                renderAdminTable();
+                renderAdminStats();
+                showToast(`Booking ${id} deleted permanently.`, 'info');
+            }
+        }
+
+        function seedDemoData(notify = true) {
+            const demoBookings = [
+                {
+                    id: 'GUNDA-1021',
+                    clientName: 'Ramesh Sharma',
+                    phone: '+91 98980 11223',
+                    targetName: 'Verma Ji (Noisy Generator)',
+                    location: 'House 42, Civil Lines',
+                    serviceName: 'Loud Music Debates',
+                    price: 2500,
+                    operative: 'Fuad Bhai',
+                    intensity: 'Maximum Drama',
+                    notes: 'Turn off his generator permanently.',
+                    status: 'Completed',
+                    createdAt: '22/09/2026, 14:30'
+                },
+                {
+                    id: 'GUNDA-1044',
+                    clientName: 'Priya V.',
+                    phone: '+91 97771 22334',
+                    targetName: 'Awkward Office Party',
+                    location: 'Grand Ballroom, Hotel Taj',
+                    serviceName: 'Dramatic Exit Squad',
+                    price: 3500,
+                    operative: 'Major Tiger',
+                    intensity: 'Mild',
+                    notes: 'Whisper dramatically and escort me to jeep.',
+                    status: 'Dispatched',
+                    createdAt: '23/09/2026, 10:15'
+                }
+            ];
+
+            bookings = [...demoBookings, ...bookings];
+            localStorage.setItem('gunda_bookings', JSON.stringify(bookings));
+            
+            if (isAdminLoggedIn) {
+                renderAdminTable();
+                renderAdminStats();
+            }
+
+            if (notify) {
+                showToast('Sample demo bookings loaded successfully.', 'success');
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+
+            let borderClass = 'border-blue-500 bg-slate-900 text-blue-400';
+            let icon = 'fa-info-circle';
+
+            if (type === 'success') {
+                borderClass = 'border-emerald-500 bg-slate-900 text-emerald-400';
+                icon = 'fa-circle-check';
+            } else if (type === 'error') {
+                borderClass = 'border-red-500 bg-slate-900 text-red-400';
+                icon = 'fa-triangle-exclamation';
+            }
+
+            toast.className = `pointer-events-auto flex items-center space-x-3 px-4 py-3 rounded-xl border ${borderClass} shadow-xl shadow-black/50 text-sm font-semibold transition-all duration-300 transform translate-y-2 opacity-0`;
+            toast.innerHTML = `
+                <i class="fa-solid ${icon} text-lg"></i>
+                <span class="text-slate-100">${message}</span>
+            `;
+
+            container.appendChild(toast);
+
+            // Animate in
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            // Remove after 3.5 sec
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
