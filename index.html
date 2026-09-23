@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunda Fuad Associates - Premium Conflict Resolution</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#dc2626',
+                            darkred: '#991b1b',
+                            gold: '#f59e0b',
+                            dark: '#0f172a',
+                            card: '#1e293b'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #090d16;
+            color: #f1f5f9;
+        }
+        .font-display {
+            font-family: 'Oswald', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-panel-glow {
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            box-shadow: 0 0 25px rgba(220, 38, 38, 0.15);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #ef4444 0%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #ef4444;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-red-600 selection:text-white custom-scrollbar">
+
+    <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('home')">
+                    <div class="w-12 h-12 bg-gradient-to-br from-red-600 to-black rounded-xl flex items-center justify-center border border-red-500/40 shadow-lg shadow-red-900/30">
+                        <i class="fa-solid fa-user-ninja text-2xl text-red-500"></i>
+                    </div>
+                    <div>
+                        <span class="font-display text-2xl font-bold tracking-wider text-white block leading-none">GUNDA FUAD</span>
+                        <span class="text-xs font-semibold tracking-widest text-red-500 uppercase">Associates & Solutions</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <button onclick="switchTab('home')" id="nav-home" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-red-500 bg-red-950/40 border border-red-800/40">
+                        <i class="fa-solid fa-house mr-2"></i>Home
+                    </button>
+                    <button onclick="switchTab('services')" id="nav-services" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-hand-fist mr-2"></i>Services
+                    </button>
+                    <button onclick="switchTab('operatives')" id="nav-operatives" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-users-gear mr-2"></i>Operatives
+                    </button>
+                    <button onclick="switchTab('booking')" id="nav-booking" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-calendar-plus mr-2"></i>Book Service
+                    </button>
+                    <button onclick="switchTab('track')" id="nav-track" class="nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60">
+                        <i class="fa-solid fa-magnifying-glass-location mr-2"></i>Track Booking
+                    </button>
+                </nav>
+
+                <!-- Admin Tab & Action Button -->
+                <div class="flex items-center space-x-3">
+                    <button onclick="switchTab('admin')" id="nav-admin" class="relative group px-4 py-2 rounded-lg text-sm font-bold transition-all bg-slate-800 hover:bg-red-900/60 text-slate-200 border border-slate-700 hover:border-red-600 flex items-center space-x-2">
+                        <i class="fa-solid fa-user-shield text-amber-400"></i>
+                        <span>Admin Portal</span>
+                        <span id="admin-badge" class="hidden text-xs bg-red-600 text-white px-2 py-0.5 rounded-full font-sans">Unlocked</span>
+                    </button>
+                    
+                    <!-- Mobile menu button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-lg text-slate-300 hover:bg-slate-800">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-t border-slate-800 px-4 py-3 space-y-2">
+            <button onclick="switchTab('home')" class="w-full text-left px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800"><i class="fa-solid fa-house w-6"></i> Home</button>
+            <button onclick="switchTab('services')" class="w-full text-left px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800"><i class="fa-solid fa-hand-fist w-6"></i> Services</button>
+            <button onclick="switchTab('operatives')" class="w-full text-left px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800"><i class="fa-solid fa-users-gear w-6"></i> Operatives</button>
+            <button onclick="switchTab('booking')" class="w-full text-left px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800"><i class="fa-solid fa-calendar-plus w-6"></i> Book Service</button>
+            <button onclick="switchTab('track')" class="w-full text-left px-4 py-2 rounded-lg text-slate-200 hover:bg-slate-800"><i class="fa-solid fa-magnifying-glass-location w-6"></i> Track Booking</button>
+            <button onclick="switchTab('admin')" class="w-full text-left px-4 py-2 rounded-lg text-amber-400 hover:bg-slate-800 font-bold"><i class="fa-solid fa-user-shield w-6"></i> Admin Dashboard</button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- ================= TAB 1: HOME PAGE ================= -->
+        <section id="tab-home" class="tab-content space-y-12">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl glass-panel-glow p-8 sm:p-12 lg:p-16 border border-red-500/30">
+                <div class="absolute -right-10 -bottom-10 opacity-10 pointer-events-none">
+                    <i class="fa-solid fa-skull-crossbones text-[300px] text-red-500"></i>
+                </div>
+                <div class="relative z-10 max-w-3xl space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-red-950/80 border border-red-800 text-red-400 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                        <span>#1 Premium Conflict Resolution Syndicate</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-display font-bold tracking-tight text-white leading-tight">
+                        YOU HAVE A PROBLEM? <br><span class="gradient-text">FUAD BHAI HAS THE SOLUTION.</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 leading-relaxed">
+                        From intimidating loud neighbors to standing in long bank queues for you—Gunda Fuad Associates provides swift, ethical-ish, highly professional muscle and tactical presence.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <button onclick="switchTab('booking')" class="px-8 py-4 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-900/40 transition transform active:scale-95 flex items-center space-x-3 text-lg">
+                            <i class="fa-solid fa-hand-fist"></i>
+                            <span>Book Operative Now</span>
+                        </button>
+                        <button onclick="switchTab('services')" class="px-8 py-4 glass-panel hover:bg-slate-800 text-white font-semibold rounded-xl border border-slate-700 transition flex items-center space-x-2 text-lg">
+                            <span>Explore Services</span>
+                            <i class="fa-solid fa-arrow-right text-slate-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FUAD BHAI SPOTLIGHT & BIG PHOTO SHOWCASE -->
+            <div class="glass-panel-glow rounded-3xl p-6 sm:p-10 border border-amber-500/40 relative overflow-hidden">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <!-- Big Photo Space for Fuad Bhai -->
+                    <div class="lg:col-span-5 relative group">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-red-600 via-amber-500 to-red-800 rounded-3xl blur opacity-40 group-hover:opacity-80 transition duration-500"></div>
+                        <div class="relative rounded-2xl overflow-hidden border-2 border-amber-500/50 bg-slate-950 aspect-[4/5] shadow-2xl flex items-center justify-center">
+                            <img id="fuad-bhai-main-img" src="https://placehold.co/600x750/3b0764/f59e0b?text=FUAD+BHAI+(SUPREME+BOSS)" alt="Fuad Bhai Supreme Commander" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500">
+                            <div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-6 text-center">
+                                <span class="bg-amber-500 text-slate-950 px-3 py-1 rounded-full text-xs font-black tracking-widest uppercase mb-2 inline-block shadow-lg">SUPREME COMMANDER</span>
+                                <h3 class="text-3xl font-display font-black text-white tracking-wider">FUAD BHAI</h3>
+                                <p class="text-xs text-amber-300 font-semibold mt-1">"Problem Small or Big, Solution Always Final."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Details & Syndicate Legacy -->
+                    <div class="lg:col-span-7 space-y-6">
+                        <div class="space-y-2">
+                            <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Syndicate Founder & Mastermind</span>
+                            <h2 class="text-3xl sm:text-5xl font-display font-bold text-white leading-tight">
+                                THE MAN BEHIND <br><span class="gradient-text">THE RESOLUTION</span>
+                            </h2>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                                Recognized across regions for zero-compromise conflict negotiation. Fuad Bhai leads an elite roster of trained associates with razor-sharp tactical presence and folding-chair command.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <span class="text-xs text-slate-400 block font-semibold">Reputation</span>
+                                <span class="text-lg font-bold text-amber-400">100% Unmatched</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800">
+                                <span class="text-xs text-slate-400 block font-semibold">Direct Command</span>
+                                <span class="text-lg font-bold text-emerald-400">Active 24/7</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-800 col-span-2 sm:col-span-1">
+                                <span class="text-xs text-slate-400 block font-semibold">Specialty</span>
+                                <span class="text-lg font-bold text-red-400">High-Level Debates</span>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-slate-900/60 rounded-xl border border-slate-800 text-xs text-slate-300 flex items-center space-x-3">
+                            <i class="fa-solid fa-quote-left text-2xl text-amber-500/60"></i>
+                            <p class="italic">"We don't look for trouble, but when trouble comes to our clients, trouble leaves in a hurry." — Fuad Bhai</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Elegant 100% Discount Poster for Women -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-r from-rose-950/80 via-purple-950/60 to-slate-900 border border-pink-500/40 p-8 sm:p-10 shadow-2xl backdrop-blur-xl group hover:border-pink-500/70 transition-all duration-500">
+                <div class="absolute -right-20 -top-20 w-80 h-80 bg-pink-600/15 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute -left-20 -bottom-20 w-80 h-80 bg-rose-600/15 rounded-full blur-3xl pointer-events-none"></div>
+                
+                <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+                    <div class="space-y-4 text-center lg:text-left max-w-2xl">
+                        <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-500/40 text-pink-300 px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest backdrop-blur-md">
+                            <i class="fa-solid fa-crown text-amber-400"></i>
+                            <span>Special Sisterhood Protection Initiative</span>
+                        </div>
+                        <h2 class="text-3xl sm:text-5xl font-display font-bold text-white leading-tight">
+                            <span class="bg-gradient-to-r from-pink-300 via-rose-300 to-amber-200 bg-clip-text text-transparent">100% FREE FOR GIRLS</span> & WOMEN
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Zero fees. Total respect. Fuad Bhai’s ironclad directive: Any sister facing harassment, stalkers, creepy landlords, or unfair trouble receives <span class="text-pink-300 font-semibold">100% free priority dispatch</span>. Your safety is our honor.
+                        </p>
+                        <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-medium text-pink-200/80 pt-1">
+                            <span class="flex items-center space-x-1.5"><i class="fa-solid fa-shield-heart text-pink-400"></i><span>100% Fee Waived</span></span>
+                            <span class="text-slate-600">•</span>
+                            <span class="flex items-center space-x-1.5"><i class="fa-solid fa-bolt text-amber-400"></i><span>VIP Priority Dispatch</span></span>
+                            <span class="text-slate-600">•</span>
+                            <span class="flex items-center space-x-1.5"><i class="fa-solid fa-user-shield text-emerald-400"></i><span>Discreet & Zero Hassle</span></span>
+                        </div>
+                    </div>
+
+                    <!-- Visual Discount Badge Card -->
+                    <div class="flex-shrink-0 flex flex-col items-center justify-center bg-slate-950/80 border border-pink-500/40 p-6 sm:p-8 rounded-2xl shadow-xl hover:scale-105 transition transform duration-300 text-center min-w-[240px]">
+                        <span class="text-xs font-bold uppercase tracking-widest text-pink-400">Exclusive Voucher</span>
+                        <div class="text-5xl sm:text-6xl font-display font-black bg-gradient-to-br from-pink-400 via-rose-300 to-amber-300 bg-clip-text text-transparent my-1">
+                            100% OFF
+                        </div>
+                        <span class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-4">SISTERHOOD DISCOUNT</span>
+                        <button onclick="claimGirlsDiscount()" class="w-full py-3.5 px-6 bg-gradient-to-r from-pink-600 via-rose-600 to-red-600 hover:from-pink-500 hover:to-red-500 text-white font-bold text-sm rounded-xl shadow-lg shadow-pink-950/50 transition transform active:scale-95 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>Claim Free Service</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 text-center">
+                    <div class="text-3xl sm:text-4xl font-display font-bold text-red-500">100%</div>
+                    <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider font-semibold mt-1">Conflict Resolution</div>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 text-center">
+                    <div class="text-3xl sm:text-4xl font-display font-bold text-amber-500">12+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider font-semibold mt-1">Elite Operatives</div>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 text-center">
+                    <div class="text-3xl sm:text-4xl font-display font-bold text-emerald-500">2,400+</div>
+                    <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider font-semibold mt-1">Missions Accomplished</div>
+                </div>
+                <div class="glass-panel p-6 rounded-2xl border-slate-800 text-center">
+                    <div class="text-3xl sm:text-4xl font-display font-bold text-blue-500">0</div>
+                    <div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider font-semibold mt-1">Questions Asked</div>
+                </div>
+            </div>
+
+            <!-- PHOTO GALLERY SECTION -->
+            <div class="space-y-6 pt-4">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 bg-slate-800 text-amber-400 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider border border-slate-700">
+                            <i class="fa-solid fa-camera text-red-500"></i>
+                            <span>Syndicate Field Archives</span>
+                        </div>
+                        <h2 class="text-3xl font-display font-bold text-white uppercase mt-2">PHOTO GALLERY & MISSIONS</h2>
+                    </div>
+                    <p class="text-slate-400 text-xs sm:text-sm max-w-md">Snapshots from tactical folding-chair deployments, queue enforcement, and conflict resolution operations.</p>
+                </div>
+
+                <div id="home-gallery-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Gallery cards dynamically rendered here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: SERVICES ================= -->
+        <section id="tab-services" class="tab-content hidden space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <h2 class="text-3xl font-display font-bold text-white uppercase tracking-wide">Our Specialized Services</h2>
+                <p class="text-slate-400">Select the level of persuasion your situation demands.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+                <!-- Services will be dynamically injected here -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: OPERATIVES ================= -->
+        <section id="tab-operatives" class="tab-content hidden space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-3">
+                <div class="inline-flex items-center space-x-2 bg-red-950/80 border border-red-800 text-red-400 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-solid fa-users text-amber-400"></i>
+                    <span>The Elite Heavyweight Squad</span>
+                </div>
+                <h2 class="text-3xl font-display font-bold text-white uppercase tracking-wide">Meet Our Operatives</h2>
+                <p class="text-slate-400 text-sm">Battle-tested professionals trained in intense staring, acoustic shock, public speeches, and precision conflict handling.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="operatives-grid">
+                <!-- Operative cards will be dynamically injected here -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: BOOKING FORM ================= -->
+        <section id="tab-booking" class="tab-content hidden max-w-3xl mx-auto space-y-8">
+            <div class="glass-panel-glow p-8 rounded-3xl border border-slate-700 space-y-6">
+                <div class="border-b border-slate-800 pb-4">
+                    <h2 class="text-2xl font-display font-bold text-white flex items-center space-x-3">
+                        <i class="fa-solid fa-file-signature text-red-500"></i>
+                        <span>Book an Operative / Service</span>
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-1">Fill out the confidential dispatch request below.</p>
+                </div>
+
+                <form id="booking-form" onsubmit="handleBookingSubmit(event)" class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Your Name / Alias *</label>
+                            <input type="text" id="book-client-name" required placeholder="e.g. Master Raju" class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Contact Number / Telegram *</label>
+                            <input type="text" id="book-client-phone" required placeholder="+91 98765 43210" class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Target Person / Party Name *</label>
+                            <input type="text" id="book-target-name" required placeholder="e.g. Loud Neighbor Sharma Ji" class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Target Location / Address *</label>
+                            <input type="text" id="book-location" required placeholder="e.g. Flat 302, Green Park Society" class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Required Service *</label>
+                        <select id="book-service-select" onchange="updateBookingPrice()" required class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Preferred Lead Operative</label>
+                        <select id="book-operative-select" class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition">
+                            <option value="Any Available">Any Available (Fastest Dispatch)</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Intensity Level</label>
+                        <div class="grid grid-cols-3 gap-3">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="intensity" value="Mild" checked class="peer hidden">
+                                <div class="p-3 bg-slate-900 border border-slate-700 rounded-xl text-center peer-checked:border-emerald-500 peer-checked:bg-emerald-950/40 peer-checked:text-emerald-400 transition">
+                                    <i class="fa-solid fa-face-frown mb-1 block text-lg"></i>
+                                    <span class="text-xs font-bold">Mild</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="intensity" value="Aggressive" class="peer hidden">
+                                <div class="p-3 bg-slate-900 border border-slate-700 rounded-xl text-center peer-checked:border-amber-500 peer-checked:bg-amber-950/40 peer-checked:text-amber-400 transition">
+                                    <i class="fa-solid fa-face-angry mb-1 block text-lg"></i>
+                                    <span class="text-xs font-bold">Aggressive</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="intensity" value="Maximum Drama" class="peer hidden">
+                                <div class="p-3 bg-slate-900 border border-slate-700 rounded-xl text-center peer-checked:border-red-500 peer-checked:bg-red-950/40 peer-checked:text-red-400 transition">
+                                    <i class="fa-solid fa-fire-flame-curved mb-1 block text-lg"></i>
+                                    <span class="text-xs font-bold">Max Drama</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-gradient-to-r from-pink-950/40 to-slate-900 border border-pink-500/40 rounded-xl flex items-center justify-between gap-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center text-xl flex-shrink-0">
+                                <i class="fa-solid fa-person-dress"></i>
+                            </div>
+                            <div>
+                                <label for="book-girl-discount" class="text-sm font-bold text-pink-300 cursor-pointer block">Sisterhood Protection Initiative (100% OFF)</label>
+                                <span class="text-xs text-slate-400 block">Check if you are a female client requesting dispatch. Fee is completely waived.</span>
+                            </div>
+                        </div>
+                        <input type="checkbox" id="book-girl-discount" onchange="updateBookingPrice()" class="w-6 h-6 rounded border-slate-700 text-pink-600 focus:ring-pink-500 accent-pink-600 cursor-pointer flex-shrink-0">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold uppercase text-slate-400 mb-2">Special Notes / Dialogue Demands</label>
+                        <textarea id="book-notes" rows="3" placeholder="e.g., Tell him Fuad Bhai sent you. Bring extra sunglasses." class="w-full bg-slate-900/90 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white focus:outline-none transition"></textarea>
+                    </div>
+
+                    <div class="p-4 bg-slate-900/80 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div>
+                            <span class="text-xs text-slate-400 block uppercase font-semibold">Estimated Price</span>
+                            <span id="booking-calculated-price" class="text-2xl font-display font-bold text-emerald-400">₹0</span>
+                        </div>
+                        <div class="text-xs text-slate-500 text-right">
+                            <p>Includes protection guarantee</p>
+                            <p class="text-red-400 font-semibold">No advance needed. Pay post-work.</p>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full py-4 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-950 transition transform active:scale-98 flex items-center justify-center space-x-2 text-lg">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <span>Confirm & Dispatch Request</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- ================= TAB 5: TRACK BOOKING ================= -->
+        <section id="tab-track" class="tab-content hidden max-w-2xl mx-auto space-y-8">
+            <div class="glass-panel p-8 rounded-3xl border border-slate-800 text-center space-y-6">
+                <div class="w-16 h-16 bg-red-950/60 rounded-2xl border border-red-800/60 flex items-center justify-center mx-auto text-red-500 text-2xl">
+                    <i class="fa-solid fa-radar"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white uppercase">Track Mission Status</h2>
+                    <p class="text-slate-400 text-sm mt-1">Enter your Booking ID received during dispatch to inspect operation status.</p>
+                </div>
+
+                <div class="flex gap-2 max-w-md mx-auto">
+                    <input type="text" id="track-id-input" placeholder="e.g., GUNDA-8821" class="flex-grow bg-slate-900 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-white uppercase tracking-wider focus:outline-none">
+                    <button onclick="trackBooking()" class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-xl transition">
+                        Search
+                    </button>
+                </div>
+
+                <div id="track-result-container" class="hidden text-left mt-6">
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 6: ADMIN DASHBOARD (PASSWORD: anju) ================= -->
+        <section id="tab-admin" class="tab-content hidden space-y-8">
+            
+            <div id="admin-auth-panel" class="max-w-md mx-auto glass-panel-glow p-8 rounded-3xl border border-red-500/40 text-center space-y-6">
+                <div class="w-16 h-16 bg-red-950/80 rounded-2xl border border-red-700 flex items-center justify-center mx-auto text-amber-400 text-3xl shadow-lg shadow-red-950">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-display font-bold text-white">RESTRICTED AREA</h2>
+                    <p class="text-slate-400 text-sm mt-1">Enter Admin Password to access Syndicate Command.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="relative">
+                        <input type="password" id="admin-pass-input" placeholder="Enter Password" class="w-full bg-slate-900 border border-slate-700 focus:border-red-500 rounded-xl px-4 py-3 text-center text-xl text-white tracking-widest focus:outline-none" onkeyup="if(event.key==='Enter') verifyAdminPassword()">
+                    </div>
+                    <button onclick="verifyAdminPassword()" class="w-full py-3.5 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white font-bold rounded-xl shadow-lg transition">
+                        Unlock Admin Access
+                    </button>
+                </div>
+                <p class="text-xs text-slate-500">Default Primary Password: <span class="text-amber-400 font-mono">anju</span></p>
+            </div>
+
+            <div id="admin-dashboard-panel" class="hidden space-y-8">
+                <!-- Admin Header Bar -->
+                <div class="glass-panel p-6 rounded-2xl border border-amber-500/30 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-amber-500/10 rounded-xl border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl">
+                            <i class="fa-solid fa-user-ninja"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center space-x-2">
+                                <h2 class="text-2xl font-display font-bold text-white">COMMAND CENTER</h2>
+                                <span class="bg-amber-500/20 text-amber-400 text-xs px-2.5 py-0.5 rounded-full font-bold border border-amber-500/30">ADMIN MODE</span>
+                            </div>
+                            <p class="text-slate-400 text-sm">Logged in as Admin: <span id="admin-active-user-display" class="text-white font-semibold">Anju</span></p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span id="sync-status-indicator" class="text-xs px-3 py-1.5 rounded-lg bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 font-semibold flex items-center space-x-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            <span>Live Database Connected</span>
+                        </span>
+                        <button onclick="logoutAdmin()" class="px-4 py-2 bg-red-950/80 hover:bg-red-900 border border-red-800 rounded-lg text-xs font-semibold text-red-300 transition">
+                            <i class="fa-solid fa-right-from-bracket mr-1"></i> Lock Portal
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ADMIN MANAGEMENT & ACCESS CONTROLS -->
+                <div class="grid lg:grid-cols-2 gap-6">
+                    <!-- Admin User Management Card -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-6">
+                        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                            <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                                <i class="fa-solid fa-user-shield text-amber-400"></i>
+                                <span>Admin Credentials Control</span>
+                            </h3>
+                            <button onclick="toggleAddAdminForm()" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-bold transition">
+                                <i class="fa-solid fa-plus mr-1"></i> Add Admin
+                            </button>
+                        </div>
+
+                        <!-- Add Admin Form -->
+                        <form id="add-admin-form" onsubmit="handleAddNewAdmin(event)" class="hidden p-4 bg-slate-900 border border-slate-700 rounded-xl space-y-3">
+                            <h4 class="text-xs font-bold text-amber-400 uppercase">Create New Admin Account</h4>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Username / Name *</label>
+                                    <input type="text" id="new-admin-user" required placeholder="e.g. Rahul" class="w-full bg-slate-950 border border-slate-700 rounded px-2.5 py-2 text-white focus:outline-none focus:border-red-500">
+                                </div>
+                                <div>
+                                    <label class="block text-slate-400 mb-1">Access Password *</label>
+                                    <input type="text" id="new-admin-pass" required placeholder="e.g. rahul123" class="w-full bg-slate-950 border border-slate-700 rounded px-2.5 py-2 text-white focus:outline-none focus:border-red-500">
+                                </div>
+                            </div>
+                            <div class="flex justify-end space-x-2 pt-1">
+                                <button type="button" onclick="toggleAddAdminForm()" class="px-3 py-1 bg-slate-800 text-slate-300 rounded text-xs">Cancel</button>
+                                <button type="submit" class="px-4 py-1 bg-emerald-600 text-white font-bold rounded text-xs">Save Admin</button>
+                            </div>
+                        </form>
+
+                        <!-- Admins List -->
+                        <div class="space-y-2">
+                            <span class="text-xs text-slate-400 font-semibold uppercase block">Active Administrators</span>
+                            <div id="admin-users-list" class="space-y-2 max-h-48 overflow-y-auto custom-scrollbar pr-1">
+                                <!-- Dynamic list of admins -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fuad Bhai Photo Showcase Controls -->
+                    <div class="glass-panel p-6 rounded-2xl border border-slate-800 space-y-4">
+                        <div class="border-b border-slate-800 pb-3">
+                            <h3 class="text-lg font-bold text-white flex items-center space-x-2">
+                                <i class="fa-solid fa-crown text-amber-400"></i>
+                                <span>Fuad Bhai Photo Settings</span>
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Update the Supreme Boss showcase photo on the home page.</p>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <img id="admin-fuad-preview" src="https://placehold.co/600x750/3b0764/f59e0b?text=FUAD+BHAI" class="w-20 h-24 rounded-lg object-cover border border-amber-500/40 flex-shrink-0">
+                            <div class="space-y-2 flex-grow">
+                                <label class="block text-xs text-slate-400 font-semibold">Update Image URL or File</label>
+                                <div class="flex gap-2">
+                                    <input type="url" id="admin-fuad-url-input" placeholder="Enter Fuad Bhai Photo URL..." class="flex-grow bg-slate-950 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-amber-500">
+                                    <button onclick="saveFuadBhaiPhotoFromUrl()" class="px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-white rounded-lg text-xs font-bold transition">Set</button>
+                                </div>
+                                <div>
+                                    <label class="cursor-pointer text-xs text-pink-400 hover:text-pink-300 font-semibold flex items-center space-x-1">
+                                        <i class="fa-solid fa-upload"></i>
+                                        <span>Upload File From Device</span>
+                                        <input type="file" accept="image/*" onchange="handleFuadBhaiFileUpload(event)" class="hidden">
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GALLERY MANAGEMENT SECTION -->
+                <div class="glass-panel rounded-2xl border border-slate-800 p-6 space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white flex items-center space-x-2">
+                                <i class="fa-solid fa-images text-red-500"></i>
+                                <span>Photo Gallery Manager</span>
+                            </h3>
+                            <p class="text-xs text-slate-400 mt-0.5">Upload photos or add image links to showcase syndicate activities on the Home tab.</p>
+                        </div>
+                        <button onclick="toggleAddGalleryModal()" class="px-4 py-2 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 text-white rounded-xl text-xs font-bold transition flex items-center space-x-2 shadow-lg">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Add Photo to Gallery</span>
+                        </button>
+                    </div>
+
+                    <!-- Add Gallery Item Form -->
+                    <form id="add-gallery-form" onsubmit="handleAddNewGalleryItem(event)" class="hidden p-5 bg-slate-900 border border-slate-700 rounded-2xl space-y-4">
+                        <h4 class="text-xs font-bold text-amber-400 uppercase">Add New Gallery Photo</h4>
+                        <div class="grid sm:grid-cols-2 gap-4 text-xs">
+                            <div>
+                                <label class="block text-slate-400 mb-1">Photo Title *</label>
+                                <input type="text" id="new-gal-title" required placeholder="e.g. Folding Chair Operation" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-red-500">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">Description *</label>
+                                <input type="text" id="new-gal-desc" required placeholder="e.g. Associates keeping target silent" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-red-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1 text-xs">Photo (URL or File Upload) *</label>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <input type="url" id="new-gal-image-url" placeholder="https://example.com/photo.jpg" class="flex-grow bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-red-500">
+                                <span class="text-slate-500 text-xs self-center">OR</span>
+                                <input type="file" id="new-gal-image-file" accept="image/*" onchange="handleNewGalFileSelect(event)" class="text-xs text-slate-400 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-amber-400 hover:file:bg-slate-700 cursor-pointer">
+                            </div>
+                        </div>
+                        <div class="flex justify-end space-x-3 pt-2">
+                            <button type="button" onclick="toggleAddGalleryModal()" class="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold">Cancel</button>
+                            <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold shadow">Save to Gallery</button>
+                        </div>
+                    </form>
+
+                    <div id="admin-gallery-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <!-- Dynamic admin gallery cards -->
+                    </div>
+                </div>
+
+                <!-- Quick Metrics Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="glass-panel p-5 rounded-xl border-slate-800">
+                        <span class="text-xs text-slate-400 font-semibold uppercase">Total Bookings</span>
+                        <div id="admin-stat-total" class="text-3xl font-display font-bold text-white mt-1">0</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-slate-800">
+                        <span class="text-xs text-slate-400 font-semibold uppercase">Pending Dispatches</span>
+                        <div id="admin-stat-pending" class="text-3xl font-display font-bold text-amber-400 mt-1">0</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-slate-800">
+                        <span class="text-xs text-slate-400 font-semibold uppercase">Missions In Progress</span>
+                        <div id="admin-stat-progress" class="text-3xl font-display font-bold text-blue-400 mt-1">0</div>
+                    </div>
+                    <div class="glass-panel p-5 rounded-xl border-slate-800">
+                        <span class="text-xs text-slate-400 font-semibold uppercase">Estimated Revenue</span>
+                        <div id="admin-stat-revenue" class="text-3xl font-display font-bold text-emerald-400 mt-1">₹0</div>
+                    </div>
+                </div>
+
+                <!-- OPERATIVES MANAGEMENT SECTION -->
+                <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden p-6 space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white flex items-center space-x-2">
+                                <i class="fa-solid fa-id-card text-amber-400"></i>
+                                <span>Operative Roster & Live Photo Sync</span>
+                            </h3>
+                            <p class="text-slate-400 text-xs mt-1">Upload photos or enter URLs to update operative profiles globally across all visitors.</p>
+                        </div>
+                        <button onclick="toggleAddOperativeModal()" class="px-4 py-2 bg-gradient-to-r from-red-600 to-red-800 hover:from-red-500 hover:to-red-700 text-white rounded-xl text-xs font-bold transition flex items-center space-x-2 shadow-lg">
+                            <i class="fa-solid fa-user-plus"></i>
+                            <span>Add New Operative</span>
+                        </button>
+                    </div>
+
+                    <form id="add-operative-form" onsubmit="handleAddNewOperative(event)" class="hidden p-5 bg-slate-900/90 border border-slate-700 rounded-2xl space-y-4">
+                        <h4 class="text-sm font-bold text-amber-400 uppercase tracking-wider">Recruit New Operative</h4>
+                        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-xs">
+                            <div>
+                                <label class="block text-slate-400 mb-1">Operative Name *</label>
+                                <input type="text" id="new-op-name" required placeholder="e.g. RAHUL" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-red-500">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">Title / Designation *</label>
+                                <input type="text" id="new-op-title" required placeholder="e.g. Heavy Stare Specialist" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-red-500">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">Specialty *</label>
+                                <input type="text" id="new-op-specialty" required placeholder="e.g. Eyebrow Flexing" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-red-500">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">Experience *</label>
+                                <input type="text" id="new-op-exp" required placeholder="e.g. 5 Years" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-red-500">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">Bicep Size *</label>
+                                <input type="text" id="new-op-bicep" required placeholder="e.g. 18 Inches" class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-red-500">
+                            </div>
+                            <div>
+                                <label class="block text-slate-400 mb-1">Rating (1.0 - 5.0) *</label>
+                                <input type="number" id="new-op-rating" step="0.1" min="1" max="5" value="4.9" required class="w-full bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-white focus:outline-none focus:border-red-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-slate-400 mb-1">Photo (Upload File or Enter Image URL) *</label>
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <input type="url" id="new-op-image-url" placeholder="https://example.com/photo.jpg" class="flex-grow bg-slate-950 border border-slate-700 rounded-lg p-2.5 text-xs text-white focus:outline-none focus:border-red-500">
+                                <span class="text-slate-500 text-xs self-center">OR</span>
+                                <input type="file" id="new-op-image-file" accept="image/*" onchange="handleNewOpFileSelect(event)" class="text-xs text-slate-400 file:mr-3 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-slate-800 file:text-amber-400 hover:file:bg-slate-700 cursor-pointer">
+                            </div>
+                        </div>
+                        <div class="flex justify-end space-x-3 pt-2">
+                            <button type="button" onclick="toggleAddOperativeModal()" class="px-4 py-2 bg-slate-800 text-slate-300 rounded-lg text-xs font-semibold hover:bg-slate-700">Cancel</button>
+                            <button type="submit" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg text-xs font-bold shadow">Save Operative</button>
+                        </div>
+                    </form>
+
+                    <div id="admin-operatives-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    </div>
+                </div>
+
+                <!-- Bookings Management Table -->
+                <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden">
+                    <div class="p-6 border-b border-slate-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                        <h3 class="text-xl font-bold text-white flex items-center space-x-2">
+                            <i class="fa-solid fa-list-check text-red-500"></i>
+                            <span>Live Customer Dispatches</span>
+                        </h3>
+                        <div class="flex items-center space-x-3 w-full md:w-auto">
+                            <input type="text" id="admin-search-input" onkeyup="renderAdminTable()" placeholder="Search client or target..." class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none w-full md:w-64">
+                            <select id="admin-filter-status" onchange="renderAdminTable()" class="bg-slate-900 border border-slate-700 rounded-lg px-3 py-1.5 text-sm text-white focus:outline-none">
+                                <option value="ALL">All Status</option>
+                                <option value="Pending">Pending</option>
+                                <option value="Dispatched">Dispatched</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm text-slate-300">
+                            <thead class="bg-slate-900/80 text-xs font-semibold uppercase text-slate-400 border-b border-slate-800">
+                                <tr>
+                                    <th class="p-4">ID</th>
+                                    <th class="p-4">Client</th>
+                                    <th class="p-4">Target & Address</th>
+                                    <th class="p-4">Service</th>
+                                    <th class="p-4">Operative</th>
+                                    <th class="p-4">Fee</th>
+                                    <th class="p-4">Status</th>
+                                    <th class="p-4 text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-bookings-tbody" class="divide-y divide-slate-800">
+                                <!-- Dynamic rows injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="glass-panel border-t border-slate-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center space-y-3">
+            <div class="flex items-center justify-center space-x-2 text-slate-400">
+                <i class="fa-solid fa-shield-halved text-red-500"></i>
+                <span class="font-display font-bold text-white tracking-wider">GUNDA FUAD ASSOCIATES</span>
+            </div>
+            <p class="text-xs text-slate-500 max-w-xl mx-auto">
+                Disclaimer: Gunda Fuad Associates is a comedic fictional service app. No real violence or intimidation is condoned. All operatives are trained actors with great biceps.
+            </p>
+            <p class="text-xs text-slate-600">© 2026 Gunda Fuad Associates. All rights reserved. Admin: <span class="text-slate-500 font-mono">anju</span></p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Overlay -->
+    <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col space-y-2 pointer-events-none"></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, setDoc, updateDoc, deleteDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global Firebase Setup
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'gunda-fuad-syndicate-v1';
+        
+        // Active Real-Time Firebase Project Credentials
+        const defaultFirebaseConfig = {
+            apiKey: "AIzaSyDvfU2tlEwr5Dn-CxILP94mrIpgVUfkJhs",
+            authDomain: "gunda-fuad-app.firebaseapp.com",
+            projectId: "gunda-fuad-app",
+            storageBucket: "gunda-fuad-app.firebasestorage.app",
+            messagingSenderId: "793966041387",
+            appId: "1:793966041387:web:263f4f2c85a156c1fbcd6e",
+            measurementId: "G-58C76CQXJV"
+        };
+
+        const firebaseConfig = typeof __firebase_config !== 'undefined' && __firebase_config 
+            ? JSON.parse(__firebase_config) 
+            : defaultFirebaseConfig;
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let currentUser = null;
+
+        // Default Admin Roster
+        const DEFAULT_ADMINS = [
+            { id: 'admin-1', username: 'anju', password: 'anju', role: 'Chief Syndicate Coordinator' }
+        ];
+
+        // Default Gallery Data
+        const DEFAULT_GALLERY = [
+            { id: 'gal-1', title: 'Folding Chair Stare Mission', desc: 'Operatives Ansaf & Muhammed holding ground outside target address.', image: 'https://placehold.co/600x400/1e293b/f59e0b?text=FOLDING+CHAIR+STARE' },
+            { id: 'gal-2', title: 'Tactical Convoy Convoy', desc: 'Fuad Bhai leads black motorbike line deployment.', image: 'https://placehold.co/600x400/0f172a/ef4444?text=TACTICAL+CONVOY' },
+            { id: 'gal-3', title: 'Queue Line Enforcement', desc: 'Arshad ensuring zero cutting in line for our client.', image: 'https://placehold.co/600x400/312e81/38bdf8?text=QUEUE+ENFORCEMENT' }
+        ];
+
+        // Default Fuad Bhai Photo
+        const DEFAULT_FUAD_PHOTO = 'https://placehold.co/600x750/3b0764/f59e0b?text=FUAD+BHAI+(SUPREME+BOSS)';
+
+        // Standard Default Data Collections
+        const DEFAULT_SERVICES = [
+            { id: 'serv-1', title: 'Mild Neighbor Staring', icon: 'fa-eye', price: 1500, desc: 'Two heavy-set operatives sit outside target\'s house on a folding chair and stare silently while eating peanuts for 2 hours.', badge: 'Popular' },
+            { id: 'serv-2', title: 'Queue Line Enforcement', icon: 'fa-people-line', price: 2000, desc: 'Ensures nobody cuts in front of you at wedding buffets, bank counters, or concert tickets. Includes aggressive folding of arms.', badge: 'Essential' },
+            { id: 'serv-3', title: 'Dramatic Exit Squad', icon: 'fa-masks-theater', price: 3500, desc: 'Need to leave a boring party or bad date? Operative enters solemnly, whispers "Boss needs you in Dubai now", and escorts you out.', badge: 'VIP' },
+            { id: 'serv-4', title: 'Loud Music Debates', icon: 'fa-volume-high', price: 2500, desc: 'When polite requests fail, Fuad Bhai\'s squad plays retro villain themes at 100dB right outside target\'s window until peace is restored.', badge: 'Effective' },
+            { id: 'serv-5', title: 'Debt Reminder (Visual Only)', icon: 'fa-file-invoice-dollar', price: 4500, desc: 'Operatives ride slow black motorbikes outside the borrower\'s shop while wearing matching black sunglasses. Works 100% of the time.', badge: 'Pro' },
+            { id: 'serv-6', title: 'Full Fuad Tactical Convoy', icon: 'fa-crown', price: 10000, desc: 'Fuad Bhai himself arrives in an open jeep with 4 associates in suits to resolve high-stakes family land disputes.', badge: 'Ultimate' }
+        ];
+
+        const DEFAULT_OPERATIVES = [
+            { id: 'op-1', name: 'ANSAF', title: 'Folding Chair Strategist', experience: '8 Years', specialty: 'Heavy Stare & Eyebrow Flexing', bicep: '18.5 Inches', rating: '4.9', image: 'https://placehold.co/400x400/330000/ff3333?text=ANSAF' },
+            { id: 'op-2', name: 'ARSHAD', title: 'Tea Shop Debater & Enforcer', experience: '6 Years', specialty: 'Loud Argumentation & Table Tapping', bicep: '17.5 Inches', rating: '4.8', image: 'https://placehold.co/400x400/1a1a2e/e94560?text=ARSHAD' },
+            { id: 'op-3', name: 'NIHAL', title: 'Tactical Convoy Lead', experience: '7 Years', specialty: 'Acoustic Bike Engine Revving', bicep: '18 Inches', rating: '4.85', image: 'https://placehold.co/400x400/16213e/0f3460?text=NIHAL' },
+            { id: 'op-4', name: 'CHEPPI', title: 'Acoustic Shock Specialist', experience: '9 Years', specialty: 'High-Impact Cheppi & Echo Claps', bicep: '19 Inches', rating: '4.95', image: 'https://placehold.co/400x400/22092c/872341?text=CHEPPI' },
+            { id: 'op-5', name: 'AHMAD', title: 'Chief Orator & Speech Master', experience: '10 Years', specialty: 'Prasangikan (Non-Stop Intimidation Speech)', bicep: '17 Inches', rating: '5.0', image: 'https://placehold.co/400x400/3d0000/ffaa00?text=AHMAD' },
+            { id: 'op-6', name: 'MUHAMMED', title: 'Silent Shadow Operative', experience: '11 Years', specialty: 'Unblinking 3-Hour Stare of Doom', bicep: '19.5 Inches', rating: '4.9', image: 'https://placehold.co/400x400/0f172a/38bdf8?text=MUHAMMED' },
+            { id: 'op-7', name: 'SAHL', title: 'Melodic Threat Vocalist', experience: '5 Years', specialty: 'Vaanakkuyil (Terrifying Musical Serenades)', bicep: '16.5 Inches', rating: '4.95', image: 'https://placehold.co/400x400/2e1065/a855f7?text=SAHL' },
+            { id: 'op-8', name: 'AJSAL', title: 'Kattan Chaya Enforcer', experience: '8 Years', specialty: 'Glass Tapping & Slow-Motion Walk', bicep: '20 Inches', rating: '4.85', image: 'https://placehold.co/400x400/1e293b/10b981?text=AJSAL' },
+            { id: 'op-9', name: 'ASHAFAQ', title: 'Dark Sunglasses Strategist', experience: '9 Years', specialty: 'Pocket Comb & Dramatic Glares', bicep: '18 Inches', rating: '4.9', image: 'https://placehold.co/400x400/450a0a/f43f5e?text=ASHAFAQ' },
+            { id: 'op-10', name: 'NASHWAN', title: 'Emergency Crisis Specialist', experience: '6 Years', specialty: 'Prasavam (Crisis Delivery & Drama Creation)', bicep: '17.5 Inches', rating: '4.8', image: 'https://placehold.co/400x400/312e81/818cf8?text=NASHWAN' },
+            { id: 'op-11', name: 'NAJIL', title: 'Dramatic Entry Lead', experience: '7 Years', specialty: 'Door Kick Physics & Slow Entrance', bicep: '18.5 Inches', rating: '4.85', image: 'https://placehold.co/400x400/064e3b/34d399?text=NAJIL' },
+            { id: 'op-12', name: 'MAZIN', title: 'Precision Tactical Snatcher', experience: '12 Years', specialty: 'Pluck Specialist (Targeted Precision Plucking)', bicep: '19 Inches', rating: '5.0', image: 'https://placehold.co/400x400/701a75/f0abfc?text=MAZIN' }
+        ];
+
+        // State Variables
+        window.bookings = JSON.parse(localStorage.getItem('gunda_bookings')) || [];
+        window.operatives = JSON.parse(localStorage.getItem('gunda_operatives')) || DEFAULT_OPERATIVES;
+        window.adminUsers = JSON.parse(localStorage.getItem('gunda_admins')) || DEFAULT_ADMINS;
+        window.galleryItems = JSON.parse(localStorage.getItem('gunda_gallery')) || DEFAULT_GALLERY;
+        window.fuadBhaiPhoto = localStorage.getItem('gunda_fuadbhai_photo') || DEFAULT_FUAD_PHOTO;
+        window.activeAdminName = localStorage.getItem('gunda_active_admin_name') || 'Anju';
+
+        window.isAdminLoggedIn = localStorage.getItem('gunda_admin_auth') === 'true';
+        window.newOpDataUrl = '';
+        window.newGalDataUrl = '';
+
+        // Authentication & Initialization
+        window.onload = async function() {
+            renderServices();
+            renderOperatives();
+            renderGallery();
+            renderFuadBhaiPhoto();
+            updateAdminAuthUI();
+            switchTab('home');
+
+            // Initialize Anonymous/Token Authentication
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    const userCred = await signInWithCustomToken(auth, __initial_auth_token);
+                    currentUser = userCred.user;
+                } else {
+                    const userCred = await signInAnonymously(auth);
+                    currentUser = userCred.user;
+                }
+            } catch (err) {
+                console.warn("Real-time Auth fallback to local mode:", err);
+            }
+
+            // Real-Time Listeners
+            setupRealtimeListeners();
+        };
+
+        function setupRealtimeListeners() {
+            if (!currentUser && !auth.currentUser) return;
+
+            // STRICT PATH: /artifacts/{appId}/public/data/bookings
+            const bookingsRef = collection(db, 'artifacts', appId, 'public', 'data', 'bookings');
+            onSnapshot(bookingsRef, (snapshot) => {
+                const liveBookings = [];
+                snapshot.forEach((docSnap) => {
+                    liveBookings.push(docSnap.data());
+                });
+
+                if (liveBookings.length > 0) {
+                    liveBookings.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+                    window.bookings = liveBookings;
+                    localStorage.setItem('gunda_bookings', JSON.stringify(window.bookings));
+                }
+
+                if (window.isAdminLoggedIn) {
+                    renderAdminTable();
+                    renderAdminStats();
+                }
+            }, (error) => {
+                console.warn("Bookings real-time sync fallback:", error);
+            });
+
+            // STRICT PATH: /artifacts/{appId}/public/data/operatives
+            const operativesRef = collection(db, 'artifacts', appId, 'public', 'data', 'operatives');
+            onSnapshot(operativesRef, (snapshot) => {
+                const liveOps = [];
+                snapshot.forEach((docSnap) => {
+                    liveOps.push(docSnap.data());
+                });
+
+                if (liveOps.length > 0) {
+                    window.operatives = liveOps;
+                    localStorage.setItem('gunda_operatives', JSON.stringify(window.operatives));
+                    renderOperatives();
+                    if (window.isAdminLoggedIn) {
+                        renderAdminOperatives();
+                    }
+                }
+            }, (error) => {
+                console.warn("Operatives real-time sync fallback:", error);
+            });
+
+            // STRICT PATH: /artifacts/{appId}/public/data/admins
+            const adminsRef = collection(db, 'artifacts', appId, 'public', 'data', 'admins');
+            onSnapshot(adminsRef, (snapshot) => {
+                const liveAdmins = [];
+                snapshot.forEach((docSnap) => {
+                    liveAdmins.push(docSnap.data());
+                });
+
+                if (liveAdmins.length > 0) {
+                    window.adminUsers = liveAdmins;
+                    localStorage.setItem('gunda_admins', JSON.stringify(window.adminUsers));
+                    if (window.isAdminLoggedIn) renderAdminUsersList();
+                }
+            }, (error) => {
+                console.warn("Admins real-time sync fallback:", error);
+            });
+
+            // STRICT PATH: /artifacts/{appId}/public/data/gallery
+            const galleryRef = collection(db, 'artifacts', appId, 'public', 'data', 'gallery');
+            onSnapshot(galleryRef, (snapshot) => {
+                const liveGal = [];
+                snapshot.forEach((docSnap) => {
+                    liveGal.push(docSnap.data());
+                });
+
+                if (liveGal.length > 0) {
+                    window.galleryItems = liveGal;
+                    localStorage.setItem('gunda_gallery', JSON.stringify(window.galleryItems));
+                    renderGallery();
+                    if (window.isAdminLoggedIn) renderAdminGallery();
+                }
+            }, (error) => {
+                console.warn("Gallery real-time sync fallback:", error);
+            });
+
+            // STRICT PATH: /artifacts/{appId}/public/data/settings
+            const settingsRef = collection(db, 'artifacts', appId, 'public', 'data', 'settings');
+            onSnapshot(settingsRef, (snapshot) => {
+                snapshot.forEach((docSnap) => {
+                    if (docSnap.id === 'fuadbhai') {
+                        const data = docSnap.data();
+                        if (data && data.image) {
+                            window.fuadBhaiPhoto = data.image;
+                            localStorage.setItem('gunda_fuadbhai_photo', window.fuadBhaiPhoto);
+                            renderFuadBhaiPhoto();
+                        }
+                    }
+                });
+            }, (error) => {
+                console.warn("Settings real-time sync fallback:", error);
+            });
+        }
+
+        window.renderFuadBhaiPhoto = function() {
+            const mainImg = document.getElementById('fuad-bhai-main-img');
+            const adminPreview = document.getElementById('admin-fuad-preview');
+            const urlInput = document.getElementById('admin-fuad-url-input');
+
+            if (mainImg) mainImg.src = window.fuadBhaiPhoto;
+            if (adminPreview) adminPreview.src = window.fuadBhaiPhoto;
+            if (urlInput && !urlInput.value) urlInput.value = window.fuadBhaiPhoto.startsWith('data:') ? '' : window.fuadBhaiPhoto;
+        };
+
+        window.renderGallery = function() {
+            const homeGrid = document.getElementById('home-gallery-grid');
+            if (!homeGrid) return;
+
+            homeGrid.innerHTML = '';
+            window.galleryItems.forEach(item => {
+                homeGrid.innerHTML += `
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-slate-800 hover:border-amber-500/50 transition group">
+                        <div class="h-48 overflow-hidden bg-slate-900 relative">
+                            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                        <div class="p-5 space-y-1">
+                            <h4 class="font-bold text-white text-base">${item.title}</h4>
+                            <p class="text-xs text-slate-400">${item.desc}</p>
+                        </div>
+                    </div>
+                `;
+            });
+        };
+
+        window.renderAdminGallery = function() {
+            const adminGrid = document.getElementById('admin-gallery-grid');
+            if (!adminGrid) return;
+
+            adminGrid.innerHTML = '';
+            window.galleryItems.forEach(item => {
+                adminGrid.innerHTML += `
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center justify-between space-x-3">
+                        <div class="flex items-center space-x-3 overflow-hidden">
+                            <img src="${item.image}" class="w-14 h-14 rounded-lg object-cover flex-shrink-0 border border-slate-700">
+                            <div class="overflow-hidden">
+                                <h5 class="font-bold text-white text-xs truncate">${item.title}</h5>
+                                <p class="text-[10px] text-slate-400 truncate">${item.desc}</p>
+                            </div>
+                        </div>
+                        <button onclick="deleteGalleryItem('${item.id}')" class="p-2 text-red-400 hover:text-red-300 transition text-xs flex-shrink-0">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                `;
+            });
+        };
+
+        window.renderAdminUsersList = function() {
+            const listEl = document.getElementById('admin-users-list');
+            if (!listEl) return;
+
+            listEl.innerHTML = '';
+            window.adminUsers.forEach(a => {
+                const isPrimary = a.username.toLowerCase() === 'anju';
+                listEl.innerHTML += `
+                    <div class="flex items-center justify-between p-2.5 bg-slate-950 border border-slate-800 rounded-lg text-xs">
+                        <div class="flex items-center space-x-2">
+                            <i class="fa-solid fa-user-shield ${isPrimary ? 'text-amber-400' : 'text-slate-400'}"></i>
+                            <div>
+                                <span class="font-bold text-white">${a.username}</span>
+                                <span class="text-[10px] text-slate-500 block">Password: •••••••</span>
+                            </div>
+                        </div>
+                        <div>
+                            ${isPrimary 
+                                ? '<span class="text-[10px] text-amber-400 font-bold px-2 py-0.5 bg-amber-950/60 rounded border border-amber-800/60">Primary Boss</span>' 
+                                : `<button onclick="deleteAdmin('${a.id}')" class="text-xs text-red-400 hover:text-red-300 font-bold px-2 py-1"><i class="fa-solid fa-trash-can"></i></button>`
+                            }
+                        </div>
+                    </div>
+                `;
+            });
+        };
+
+        window.verifyAdminPassword = function() {
+            const input = document.getElementById('admin-pass-input').value.trim();
+            const matchedAdmin = window.adminUsers.find(a => a.password === input || a.username.toLowerCase() === input.toLowerCase());
+
+            if (matchedAdmin) {
+                window.isAdminLoggedIn = true;
+                window.activeAdminName = matchedAdmin.username;
+                localStorage.setItem('gunda_admin_auth', 'true');
+                localStorage.setItem('gunda_active_admin_name', matchedAdmin.username);
+
+                showToast(`Welcome Admin ${matchedAdmin.username}! Command Center Unlocked.`, 'success');
+                updateAdminAuthUI();
+                renderAdminTable();
+                renderAdminStats();
+                renderAdminOperatives();
+                renderAdminGallery();
+                renderAdminUsersList();
+            } else {
+                showToast('ACCESS DENIED! Invalid Admin Password.', 'error');
+                document.getElementById('admin-pass-input').value = '';
+            }
+        };
+
+        window.toggleAddAdminForm = function() {
+            const form = document.getElementById('add-admin-form');
+            if (form) form.classList.toggle('hidden');
+        };
+
+        window.handleAddNewAdmin = async function(e) {
+            e.preventDefault();
+            const user = document.getElementById('new-admin-user').value.trim();
+            const pass = document.getElementById('new-admin-pass').value.trim();
+
+            if (!user || !pass) return;
+
+            const newAdmin = {
+                id: 'admin-' + Date.now(),
+                username: user,
+                password: pass,
+                role: 'Syndicate Administrator'
+            };
+
+            window.adminUsers.push(newAdmin);
+            localStorage.setItem('gunda_admins', JSON.stringify(window.adminUsers));
+
+            if (auth.currentUser) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'admins', newAdmin.id);
+                    await setDoc(docRef, newAdmin);
+                } catch (err) {
+                    console.warn("Firestore admin save error:", err);
+                }
+            }
+
+            document.getElementById('add-admin-form').reset();
+            toggleAddAdminForm();
+            renderAdminUsersList();
+            showToast(`Admin account '${user}' created successfully!`, 'success');
+        };
+
+        window.deleteAdmin = async function(adminId) {
+            const adminObj = window.adminUsers.find(a => a.id === adminId);
+            if (!adminObj) return;
+
+            if (adminObj.username.toLowerCase() === 'anju') {
+                showToast('Cannot delete Primary Boss Anju!', 'error');
+                return;
+            }
+
+            if (confirm(`Remove admin privileges for ${adminObj.username}?`)) {
+                window.adminUsers = window.adminUsers.filter(a => a.id !== adminId);
+                localStorage.setItem('gunda_admins', JSON.stringify(window.adminUsers));
+
+                if (auth.currentUser) {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'admins', adminId);
+                        await deleteDoc(docRef);
+                    } catch (err) {
+                        console.warn("Firestore admin delete error:", err);
+                    }
+                }
+
+                renderAdminUsersList();
+                showToast(`Admin '${adminObj.username}' removed.`, 'info');
+            }
+        };
+
+        window.saveFuadBhaiPhotoFromUrl = async function() {
+            const urlInput = document.getElementById('admin-fuad-url-input');
+            if (!urlInput || !urlInput.value.trim()) return;
+
+            const newUrl = urlInput.value.trim();
+            await updateFuadBhaiPhoto(newUrl);
+        };
+
+        window.handleFuadBhaiFileUpload = function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async function(event) {
+                await updateFuadBhaiPhoto(event.target.result);
+            };
+            reader.readAsDataURL(file);
+        };
+
+        async function updateFuadBhaiPhoto(photoSrc) {
+            window.fuadBhaiPhoto = photoSrc;
+            localStorage.setItem('gunda_fuadbhai_photo', photoSrc);
+
+            if (auth.currentUser) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'settings', 'fuadbhai');
+                    await setDoc(docRef, { image: photoSrc });
+                } catch (err) {
+                    console.warn("Firestore settings update error:", err);
+                }
+            }
+
+            renderFuadBhaiPhoto();
+            showToast('Fuad Bhai Photo updated successfully!', 'success');
+        }
+
+        window.toggleAddGalleryModal = function() {
+            const form = document.getElementById('add-gallery-form');
+            if (form) form.classList.toggle('hidden');
+        };
+
+        window.handleNewGalFileSelect = function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                window.newGalDataUrl = evt.target.result;
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.handleAddNewGalleryItem = async function(e) {
+            e.preventDefault();
+
+            const title = document.getElementById('new-gal-title').value.trim();
+            const desc = document.getElementById('new-gal-desc').value.trim();
+            const imageUrlInput = document.getElementById('new-gal-image-url').value.trim();
+
+            let finalImage = window.newGalDataUrl || imageUrlInput || `https://placehold.co/600x400/1e293b/ffffff?text=${encodeURIComponent(title)}`;
+
+            const galId = 'gal-' + Date.now();
+            const newItem = { id: galId, title, desc, image: finalImage };
+
+            window.galleryItems.unshift(newItem);
+            localStorage.setItem('gunda_gallery', JSON.stringify(window.galleryItems));
+
+            if (auth.currentUser) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'gallery', galId);
+                    await setDoc(docRef, newItem);
+                } catch (err) {
+                    console.warn("Firestore gallery save error:", err);
+                }
+            }
+
+            document.getElementById('add-gallery-form').reset();
+            window.newGalDataUrl = '';
+            toggleAddGalleryModal();
+            renderGallery();
+            renderAdminGallery();
+            showToast('Photo added to gallery!', 'success');
+        };
+
+        window.deleteGalleryItem = async function(galId) {
+            if (confirm('Delete this photo from gallery?')) {
+                window.galleryItems = window.galleryItems.filter(g => g.id !== galId);
+                localStorage.setItem('gunda_gallery', JSON.stringify(window.galleryItems));
+
+                if (auth.currentUser) {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'gallery', galId);
+                        await deleteDoc(docRef);
+                    } catch (err) {
+                        console.warn("Firestore gallery delete error:", err);
+                    }
+                }
+
+                renderGallery();
+                renderAdminGallery();
+                showToast('Gallery item removed.', 'info');
+            }
+        };
+
+        window.switchTab = function(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+
+            const target = document.getElementById(`tab-${tabId}`);
+            if (target) target.classList.remove('hidden');
+
+            document.getElementById('mobile-menu').classList.add('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-slate-300 hover:text-white hover:bg-slate-800/60";
+            });
+
+            const activeBtn = document.getElementById(`nav-${tabId}`);
+            if (activeBtn) {
+                activeBtn.className = "nav-btn px-4 py-2 rounded-lg text-sm font-medium transition-all text-red-500 bg-red-950/40 border border-red-800/40";
+            }
+
+            if (tabId === 'admin') {
+                updateAdminAuthUI();
+                if (window.isAdminLoggedIn) {
+                    renderAdminTable();
+                    renderAdminStats();
+                    renderAdminOperatives();
+                    renderAdminGallery();
+                    renderAdminUsersList();
+                }
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        window.toggleMobileMenu = function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        };
+
+        window.renderServices = function() {
+            const container = document.getElementById('services-grid');
+            const selectEl = document.getElementById('book-service-select');
+            
+            if (!container || !selectEl) return;
+            container.innerHTML = '';
+            selectEl.innerHTML = '';
+
+            DEFAULT_SERVICES.forEach(s => {
+                container.innerHTML += `
+                    <div class="glass-panel p-6 rounded-2xl space-y-4 hover:border-red-500/50 transition flex flex-col justify-between">
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div class="w-12 h-12 bg-red-950/80 rounded-xl flex items-center justify-center text-red-500 text-xl border border-red-800/50">
+                                    <i class="fa-solid ${s.icon}"></i>
+                                </div>
+                                <span class="text-xs bg-slate-800 text-amber-400 px-2.5 py-1 rounded-full font-semibold border border-slate-700">${s.badge}</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">${s.title}</h3>
+                            <p class="text-slate-400 text-sm leading-relaxed">${s.desc}</p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-800 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-slate-500 uppercase font-semibold block">Starts from</span>
+                                <span class="text-2xl font-display font-bold text-emerald-400">₹${s.price.toLocaleString()}</span>
+                            </div>
+                            <button onclick="selectServiceAndBook('${s.id}')" class="px-4 py-2 bg-red-600/90 hover:bg-red-500 text-white rounded-xl font-semibold text-sm transition">
+                                Book This
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                selectEl.innerHTML += `<option value="${s.id}">${s.title} - ₹${s.price.toLocaleString()}</option>`;
+            });
+
+            updateBookingPrice();
+        };
+
+        window.renderOperatives = function() {
+            const container = document.getElementById('operatives-grid');
+            const selectEl = document.getElementById('book-operative-select');
+
+            if (!container || !selectEl) return;
+
+            container.innerHTML = '';
+            selectEl.innerHTML = '<option value="Any Available">Any Available (Fastest Dispatch)</option>';
+            
+            window.operatives.forEach(op => {
+                container.innerHTML += `
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-slate-800 space-y-4 hover:border-slate-700 transition">
+                        <div class="h-48 bg-slate-900 relative">
+                            <img src="${op.image}" alt="${op.name}" class="w-full h-full object-cover">
+                            <div class="absolute bottom-2 right-2 bg-slate-950/80 backdrop-blur-md px-2.5 py-1 rounded-lg text-xs font-bold text-amber-400 flex items-center space-x-1">
+                                <i class="fa-solid fa-star"></i>
+                                <span>${op.rating}</span>
+                            </div>
+                        </div>
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <h3 class="text-2xl font-display font-bold text-white">${op.name}</h3>
+                                <p class="text-xs text-red-400 font-semibold uppercase tracking-wider">${op.title}</p>
+                            </div>
+                            <div class="grid grid-cols-2 gap-2 text-xs bg-slate-900/60 p-3 rounded-xl">
+                                <div>
+                                    <span class="text-slate-500 block">Experience</span>
+                                    <span class="font-bold text-slate-200">${op.experience}</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500 block">Bicep Size</span>
+                                    <span class="font-bold text-slate-200">${op.bicep}</span>
+                                </div>
+                                <div class="col-span-2 pt-1 border-t border-slate-800">
+                                    <span class="text-slate-500 block">Signature Specialty</span>
+                                    <span class="font-bold text-amber-400">${op.specialty}</span>
+                                </div>
+                            </div>
+                            <button onclick="selectOperativeAndBook('${op.name}')" class="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl text-xs font-bold transition">
+                                Request ${op.name}
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                selectEl.innerHTML += `<option value="${op.name}">${op.name} (${op.title})</option>`;
+            });
+        };
+
+        window.renderAdminOperatives = function() {
+            const container = document.getElementById('admin-operatives-grid');
+            if (!container) return;
+
+            container.innerHTML = '';
+
+            window.operatives.forEach(op => {
+                container.innerHTML += `
+                    <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 space-y-3 flex flex-col justify-between">
+                        <div class="flex items-center space-x-3">
+                            <img id="admin-op-img-${op.id}" src="${op.image}" alt="${op.name}" class="w-16 h-16 rounded-lg object-cover border border-amber-500/30 flex-shrink-0">
+                            <div class="overflow-hidden">
+                                <h4 class="font-bold text-white text-base truncate">${op.name}</h4>
+                                <p class="text-xs text-red-400 font-semibold truncate">${op.title}</p>
+                                <span class="text-[10px] text-slate-400">${op.experience} • ${op.bicep}</span>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2 pt-2 border-t border-slate-800">
+                            <label class="block text-[11px] font-semibold text-slate-400 uppercase">Change Photo</label>
+                            <div class="flex gap-2">
+                                <input type="url" id="admin-op-url-input-${op.id}" placeholder="Image URL..." value="${op.image.startsWith('data:') ? '' : op.image}" class="w-full bg-slate-950 border border-slate-700 rounded px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-amber-500">
+                                <button onclick="updateOperativeImageFromUrl('${op.id}')" class="px-2.5 py-1.5 bg-amber-600 hover:bg-amber-500 text-white font-bold rounded text-xs transition flex-shrink-0">
+                                    Set URL
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between pt-1">
+                                <label class="cursor-pointer text-[11px] text-pink-400 hover:text-pink-300 font-semibold flex items-center space-x-1">
+                                    <i class="fa-solid fa-upload"></i>
+                                    <span>Upload Local File</span>
+                                    <input type="file" accept="image/*" onchange="handleAdminFileUpload(event, '${op.id}')" class="hidden">
+                                </label>
+                                <button onclick="deleteOperative('${op.id}')" class="text-xs text-red-400 hover:text-red-300 font-semibold flex items-center space-x-1">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                    <span>Remove</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        };
+
+        window.updateOperativeImageFromUrl = async function(opId) {
+            const urlInput = document.getElementById(`admin-op-url-input-${opId}`);
+            if (!urlInput || !urlInput.value.trim()) {
+                showToast('Please enter a valid image URL', 'error');
+                return;
+            }
+
+            const newUrl = urlInput.value.trim();
+            await saveOperativeImage(opId, newUrl);
+        };
+
+        window.handleAdminFileUpload = function(event, opId) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                await saveOperativeImage(opId, e.target.result);
+            };
+            reader.readAsDataURL(file);
+        };
+
+        async function saveOperativeImage(opId, newImageSrc) {
+            const op = window.operatives.find(o => o.id === opId);
+            if (op) {
+                op.image = newImageSrc;
+                localStorage.setItem('gunda_operatives', JSON.stringify(window.operatives));
+
+                if (auth.currentUser) {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'operatives', opId);
+                        await setDoc(docRef, op, { merge: true });
+                    } catch (e) {
+                        console.warn("Firestore sync error:", e);
+                    }
+                }
+
+                renderOperatives();
+                renderAdminOperatives();
+                showToast(`Updated photo for operative ${op.name}`, 'success');
+            }
+        }
+
+        window.toggleAddOperativeModal = function() {
+            const form = document.getElementById('add-operative-form');
+            if (form) form.classList.toggle('hidden');
+        };
+
+        window.handleNewOpFileSelect = function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                window.newOpDataUrl = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        };
+
+        window.handleAddNewOperative = async function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('new-op-name').value.trim().toUpperCase();
+            const title = document.getElementById('new-op-title').value.trim();
+            const specialty = document.getElementById('new-op-specialty').value.trim();
+            const experience = document.getElementById('new-op-exp').value.trim();
+            const bicep = document.getElementById('new-op-bicep').value.trim();
+            const rating = document.getElementById('new-op-rating').value;
+            const imageUrlInput = document.getElementById('new-op-image-url').value.trim();
+
+            let finalImage = window.newOpDataUrl || imageUrlInput || `https://placehold.co/400x400/991b1b/ffffff?text=${encodeURIComponent(name)}`;
+
+            const opId = 'op-' + Date.now();
+            const newOp = {
+                id: opId,
+                name,
+                title,
+                experience,
+                specialty,
+                bicep,
+                rating,
+                image: finalImage
+            };
+
+            window.operatives.unshift(newOp);
+            localStorage.setItem('gunda_operatives', JSON.stringify(window.operatives));
+
+            if (auth.currentUser) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'operatives', opId);
+                    await setDoc(docRef, newOp);
+                } catch (e) {
+                    console.warn("Firestore operative add error:", e);
+                }
+            }
+
+            document.getElementById('add-operative-form').reset();
+            window.newOpDataUrl = '';
+            toggleAddOperativeModal();
+
+            renderOperatives();
+            renderAdminOperatives();
+            showToast(`Operative ${name} recruited successfully!`, 'success');
+        };
+
+        window.deleteOperative = async function(opId) {
+            const op = window.operatives.find(o => o.id === opId);
+            if (!op) return;
+
+            if (confirm(`Decommission operative ${op.name}?`)) {
+                window.operatives = window.operatives.filter(o => o.id !== opId);
+                localStorage.setItem('gunda_operatives', JSON.stringify(window.operatives));
+
+                if (auth.currentUser) {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'operatives', opId);
+                        await deleteDoc(docRef);
+                    } catch (e) {
+                        console.warn("Firestore operative delete error:", e);
+                    }
+                }
+
+                renderOperatives();
+                renderAdminOperatives();
+                showToast(`Operative ${op.name} removed from roster.`, 'info');
+            }
+        };
+
+        window.selectServiceAndBook = function(serviceId) {
+            document.getElementById('book-service-select').value = serviceId;
+            updateBookingPrice();
+            switchTab('booking');
+        };
+
+        window.selectOperativeAndBook = function(opName) {
+            document.getElementById('book-operative-select').value = opName;
+            switchTab('booking');
+        };
+
+        window.claimGirlsDiscount = function() {
+            const discountCheckbox = document.getElementById('book-girl-discount');
+            if (discountCheckbox) {
+                discountCheckbox.checked = true;
+            }
+            switchTab('booking');
+            updateBookingPrice();
+            showToast('100% Sisterhood Protection Discount Applied! Fee Waived.', 'success');
+        };
+
+        window.updateBookingPrice = function() {
+            const serviceId = document.getElementById('book-service-select').value;
+            const isGirlDiscount = document.getElementById('book-girl-discount') ? document.getElementById('book-girl-discount').checked : false;
+            const service = DEFAULT_SERVICES.find(s => s.id === serviceId);
+            const priceEl = document.getElementById('booking-calculated-price');
+            
+            if (service && priceEl) {
+                if (isGirlDiscount) {
+                    priceEl.innerHTML = `<span class="line-through text-slate-500 text-lg mr-2">₹${service.price.toLocaleString()}</span> <span class="text-pink-400 font-bold">₹0 (100% FREE)</span>`;
+                } else {
+                    priceEl.innerText = `₹${service.price.toLocaleString()}`;
+                }
+            }
+        };
+
+        window.handleBookingSubmit = async function(e) {
+            e.preventDefault();
+
+            const clientName = document.getElementById('book-client-name').value.trim();
+            const phone = document.getElementById('book-client-phone').value.trim();
+            const targetName = document.getElementById('book-target-name').value.trim();
+            const location = document.getElementById('book-location').value.trim();
+            const serviceId = document.getElementById('book-service-select').value;
+            const operative = document.getElementById('book-operative-select').value;
+            const notes = document.getElementById('book-notes').value.trim();
+            const isGirlDiscount = document.getElementById('book-girl-discount') ? document.getElementById('book-girl-discount').checked : false;
+            
+            const intensity = document.querySelector('input[name="intensity"]:checked').value;
+            const serviceObj = DEFAULT_SERVICES.find(s => s.id === serviceId);
+
+            const bookingId = 'GUNDA-' + Math.floor(1000 + Math.random() * 9000);
+            const finalPrice = isGirlDiscount ? 0 : (serviceObj ? serviceObj.price : 2000);
+
+            const newBooking = {
+                id: bookingId,
+                clientName,
+                phone,
+                targetName,
+                location,
+                serviceName: serviceObj ? serviceObj.title : 'General Muscle',
+                price: finalPrice,
+                operative,
+                intensity,
+                notes,
+                status: 'Dispatched',
+                createdAt: new Date().toLocaleString(),
+                timestamp: Date.now()
+            };
+
+            window.bookings.unshift(newBooking);
+            localStorage.setItem('gunda_bookings', JSON.stringify(window.bookings));
+
+            if (auth.currentUser) {
+                try {
+                    const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'bookings', bookingId);
+                    await setDoc(docRef, newBooking);
+                } catch (e) {
+                    console.warn("Firestore sync write error:", e);
+                }
+            }
+
+            document.getElementById('booking-form').reset();
+            updateBookingPrice();
+
+            showToast(`Dispatch Confirmed! Booking ID: ${bookingId}`, 'success');
+            
+            document.getElementById('track-id-input').value = bookingId;
+            switchTab('track');
+            trackBooking();
+        };
+
+        window.trackBooking = function() {
+            const trackId = document.getElementById('track-id-input').value.trim().toUpperCase();
+            const container = document.getElementById('track-result-container');
+
+            if (!trackId) {
+                showToast('Please enter a valid Booking ID', 'error');
+                return;
+            }
+
+            const booking = window.bookings.find(b => b.id.toUpperCase() === trackId);
+
+            if (!booking) {
+                container.classList.remove('hidden');
+                container.innerHTML = `
+                    <div class="p-6 bg-red-950/40 border border-red-800 rounded-2xl text-center space-y-2">
+                        <i class="fa-solid fa-triangle-exclamation text-3xl text-red-500"></i>
+                        <h4 class="text-lg font-bold text-white">Booking ID Not Found</h4>
+                        <p class="text-xs text-slate-400">Please check your ID and try again, or create a new dispatch request.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let statusBadgeClass = 'bg-amber-500/20 text-amber-400 border-amber-500/30';
+            if (booking.status === 'Completed') statusBadgeClass = 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30';
+            if (booking.status === 'Cancelled') statusBadgeClass = 'bg-red-500/20 text-red-400 border-red-500/30';
+
+            container.classList.remove('hidden');
+            container.innerHTML = `
+                <div class="glass-panel p-6 rounded-2xl border border-slate-700 space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+                        <div>
+                            <span class="text-xs text-slate-500 block font-semibold uppercase">Booking ID</span>
+                            <span class="text-xl font-display font-bold text-red-500">${booking.id}</span>
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-bold border ${statusBadgeClass}">${booking.status}</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <span class="text-slate-500 text-xs block">Client Name</span>
+                            <span class="font-semibold text-white">${booking.clientName}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 text-xs block">Target</span>
+                            <span class="font-semibold text-white">${booking.targetName}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 text-xs block">Service Requested</span>
+                            <span class="font-semibold text-amber-400">${booking.serviceName}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 text-xs block">Assigned Lead</span>
+                            <span class="font-semibold text-slate-200">${booking.operative}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 text-xs block">Target Location</span>
+                            <span class="font-semibold text-slate-300">${booking.location}</span>
+                        </div>
+                        <div>
+                            <span class="text-slate-500 text-xs block">Fee Amount</span>
+                            <span class="font-semibold text-emerald-400">₹${booking.price.toLocaleString()}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-4 bg-slate-900 rounded-xl space-y-2">
+                        <span class="text-xs text-slate-400 font-bold uppercase block">Live Dispatch Log</span>
+                        <div class="space-y-1.5 text-xs">
+                            <div class="flex items-center space-x-2 text-emerald-400">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span>Request received & authenticated by Fuad Bhai</span>
+                            </div>
+                            <div class="flex items-center space-x-2 ${booking.status !== 'Pending' ? 'text-emerald-400' : 'text-slate-500'}">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span>Lead Operative ${booking.operative} dispatched to location</span>
+                            </div>
+                            <div class="flex items-center space-x-2 ${booking.status === 'Completed' ? 'text-emerald-400' : 'text-slate-500'}">
+                                <i class="fa-solid ${booking.status === 'Completed' ? 'fa-check-circle' : 'fa-spinner fa-spin'}"></i>
+                                <span>${booking.status === 'Completed' ? 'Target persuaded successfully! Mission completed.' : 'Operatives performing intense staring at target location...'}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        };
+
+        window.logoutAdmin = function() {
+            window.isAdminLoggedIn = false;
+            localStorage.setItem('gunda_admin_auth', 'false');
+            updateAdminAuthUI();
+            showToast('Admin Portal Locked.', 'info');
+        };
+
+        window.updateAdminAuthUI = function() {
+            const authPanel = document.getElementById('admin-auth-panel');
+            const dashPanel = document.getElementById('admin-dashboard-panel');
+            const badge = document.getElementById('admin-badge');
+            const userDisp = document.getElementById('admin-active-user-display');
+
+            if (window.isAdminLoggedIn) {
+                authPanel.classList.add('hidden');
+                dashPanel.classList.remove('hidden');
+                badge.classList.remove('hidden');
+                if (userDisp) userDisp.innerText = window.activeAdminName || 'Anju';
+            } else {
+                authPanel.classList.remove('hidden');
+                dashPanel.classList.add('hidden');
+                badge.classList.add('hidden');
+            }
+        };
+
+        window.renderAdminStats = function() {
+            const total = window.bookings.length;
+            const pending = window.bookings.filter(b => b.status === 'Pending').length;
+            const inProgress = window.bookings.filter(b => b.status === 'Dispatched').length;
+            const totalRevenue = window.bookings.reduce((acc, b) => acc + (b.status !== 'Cancelled' ? b.price : 0), 0);
+
+            document.getElementById('admin-stat-total').innerText = total;
+            document.getElementById('admin-stat-pending').innerText = pending;
+            document.getElementById('admin-stat-progress').innerText = inProgress;
+            document.getElementById('admin-stat-revenue').innerText = `₹${totalRevenue.toLocaleString()}`;
+        };
+
+        window.renderAdminTable = function() {
+            const tbody = document.getElementById('admin-bookings-tbody');
+            const searchQuery = (document.getElementById('admin-search-input')?.value || '').toLowerCase();
+            const statusFilter = document.getElementById('admin-filter-status')?.value || 'ALL';
+
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            let filtered = window.bookings.filter(b => {
+                const matchesSearch = b.clientName.toLowerCase().includes(searchQuery) ||
+                                      b.targetName.toLowerCase().includes(searchQuery) ||
+                                      b.id.toLowerCase().includes(searchQuery);
+                const matchesStatus = statusFilter === 'ALL' || b.status === statusFilter;
+                return matchesSearch && matchesStatus;
+            });
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="p-8 text-center text-slate-500">
+                            No active customer bookings found in system.
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            filtered.forEach(b => {
+                let badgeStyle = 'bg-amber-500/20 text-amber-400';
+                if (b.status === 'Completed') badgeStyle = 'bg-emerald-500/20 text-emerald-400';
+                if (b.status === 'Cancelled') badgeStyle = 'bg-red-500/20 text-red-400';
+                if (b.status === 'Dispatched') badgeStyle = 'bg-blue-500/20 text-blue-400';
+
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-900/50 transition">
+                        <td class="p-4 font-mono font-bold text-red-400">${b.id}</td>
+                        <td class="p-4">
+                            <div class="font-bold text-white">${b.clientName}</div>
+                            <div class="text-xs text-slate-400">${b.phone}</div>
+                        </td>
+                        <td class="p-4">
+                            <div class="font-semibold text-slate-200">${b.targetName}</div>
+                            <div class="text-xs text-slate-400 truncate max-w-xs">${b.location}</div>
+                        </td>
+                        <td class="p-4 text-xs font-medium text-amber-300">${b.serviceName}</td>
+                        <td class="p-4 text-xs text-slate-300 font-semibold">${b.operative}</td>
+                        <td class="p-4 font-bold text-emerald-400">₹${b.price.toLocaleString()}</td>
+                        <td class="p-4">
+                            <span class="px-2.5 py-1 rounded-full text-xs font-bold ${badgeStyle}">${b.status}</span>
+                        </td>
+                        <td class="p-4 text-right space-x-1">
+                            <select onchange="updateBookingStatus('${b.id}', this.value)" class="bg-slate-900 border border-slate-700 text-xs text-slate-200 rounded px-2 py-1 focus:outline-none">
+                                <option value="Pending" ${b.status === 'Pending' ? 'selected' : ''}>Pending</option>
+                                <option value="Dispatched" ${b.status === 'Dispatched' ? 'selected' : ''}>Dispatched</option>
+                                <option value="Completed" ${b.status === 'Completed' ? 'selected' : ''}>Completed</option>
+                                <option value="Cancelled" ${b.status === 'Cancelled' ? 'selected' : ''}>Cancelled</option>
+                            </select>
+                            <button onclick="deleteBooking('${b.id}')" title="Delete" class="p-1.5 text-slate-400 hover:text-red-500 transition">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        };
+
+        window.updateBookingStatus = async function(id, newStatus) {
+            const booking = window.bookings.find(b => b.id === id);
+            if (booking) {
+                booking.status = newStatus;
+                localStorage.setItem('gunda_bookings', JSON.stringify(window.bookings));
+
+                if (auth.currentUser) {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'bookings', id);
+                        await updateDoc(docRef, { status: newStatus });
+                    } catch (e) {
+                        console.warn("Firestore update status error:", e);
+                    }
+                }
+
+                renderAdminTable();
+                renderAdminStats();
+                showToast(`Status for ${id} updated to ${newStatus}`, 'info');
+            }
+        };
+
+        window.deleteBooking = async function(id) {
+            if (confirm(`Are you sure you want to delete record ${id}?`)) {
+                window.bookings = window.bookings.filter(b => b.id !== id);
+                localStorage.setItem('gunda_bookings', JSON.stringify(window.bookings));
+
+                if (auth.currentUser) {
+                    try {
+                        const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'bookings', id);
+                        await deleteDoc(docRef);
+                    } catch (e) {
+                        console.warn("Firestore delete booking error:", e);
+                    }
+                }
+
+                renderAdminTable();
+                renderAdminStats();
+                showToast(`Booking ${id} deleted permanently.`, 'info');
+            }
+        };
+
+        window.showToast = function(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            if (!container) return;
+            const toast = document.createElement('div');
+
+            let borderClass = 'border-blue-500 bg-slate-900 text-blue-400';
+            let icon = 'fa-info-circle';
+
+            if (type === 'success') {
+                borderClass = 'border-emerald-500 bg-slate-900 text-emerald-400';
+                icon = 'fa-circle-check';
+            } else if (type === 'error') {
+                borderClass = 'border-red-500 bg-slate-900 text-red-400';
+                icon = 'fa-triangle-exclamation';
+            }
+
+            toast.className = `pointer-events-auto flex items-center space-x-3 px-4 py-3 rounded-xl border ${borderClass} shadow-xl shadow-black/50 text-sm font-semibold transition-all duration-300 transform translate-y-2 opacity-0`;
+            toast.innerHTML = `
+                <i class="fa-solid ${icon} text-lg"></i>
+                <span class="text-slate-100">${message}</span>
+            `;
+
+            container.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('translate-y-2', 'opacity-0');
+            }, 10);
+
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 3500);
+        };
+    </script>
+</body>
+</html>
